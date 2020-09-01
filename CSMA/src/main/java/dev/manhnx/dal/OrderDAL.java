@@ -41,8 +41,33 @@ public class OrderDAL {
         order.setPrice(rs.getDouble("Price"));
         return order;
     }
-    public void createOrder( int Acc_Id,int Order, String Order_Status){
-
+    public static int createOrder(final int Acc_Id,final int Order_Id,final String Order_Status){
+        int count = 0;
+        String sql = "SELECT Order_Status FROM coffeeshop.Order_Drinks where Acc_Id= '"+Order_Id+ "';";
+        try(Connection con = ConnectionDB.getConnection();
+        PreparedStatement pstm = con.preparinteStatement(sql);
+            // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id = ?;");
+            // pstm.setInt(1, cafe.getCafeId());
+            ResultSet rs = pstm.executeQuery(sql)) {
+            while (rs.next()) {
+                if (rs.getString("Order_Status").equals("Clear") ) {
+                    count = 1;
+                } else {
+                    count = 2;
+                }
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
+            return count;
+        }
+        if (count == 1) {
+            try(Connection con = ConnectionDB.getConnection();
+        PreparedStatement pstm = con.preparinteStatement("UPDATE coffeeshop.Order_drinks SET Order_Status = 'Exit' where(Order_Id= '"+ Order_Id + "');");) {
+                int rs =pstm.executeUpdate();
+            } catch (Exception e) {
+                //TODO: handle exception
+            }
+        }
     }
     public static void orderAmountByMonth( int year){
         int count = 0;
