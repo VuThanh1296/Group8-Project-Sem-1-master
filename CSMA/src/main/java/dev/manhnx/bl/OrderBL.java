@@ -54,6 +54,7 @@ public class OrderBL {
         Order_Id = input_int();
         System.out.println("Note : ");
         order_Status = sc.nextLine();
+        CafeBL.showAllCafeOrder();
         // List<Order> lst = OrderDAL.getId(Order_Id); 
         // try {
 
