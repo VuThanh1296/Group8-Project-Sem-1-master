@@ -172,7 +172,7 @@ public class AccountUI {
                     }else{
                         switch (chose){
                             case "1":
-                           
+                               OrderBL.createOrder();
                             break;
                             case "2":
                            
