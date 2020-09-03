@@ -1,5 +1,6 @@
 package dev.manhnx.bl;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,6 +41,34 @@ public class OrderBL {
             sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" + e);
+        }
+
+    }
+    public static void showRevenue() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Date (yyyy-mm-dd): ");
+        String month = sc.nextLine();
+       List<Order> lst = OrderDAL.Revenue(month);
+        try {
+
+            System.out.println("|===================================|");
+            System.out.println("|           [CSMA] Group-08         |");
+            System.out.println("|===================================|");
+            System.out.println("|               Revenue             |");
+            System.out.println("|===================================|");
+            System.out.printf("| %-15s | %-15s | \n","Order Date", "Total Price");
+            System.out.println("|===================================|");
+            for (Order order : lst) {
+                System.out.printf("| %-15s | %-15s | \n", order.getOrderDate(), order.getTotalPrice());
+                System.out.println("|===================================|");
+
+
+            }
+            System.out.println("Press enter to back!");
+            sc.nextLine();
+        } catch (Exception e) {
+            System.out.println("error" + e);
         }
 
     }

@@ -45,29 +45,33 @@ public class OrderDAL {
         int count = 0;
         String sql = "SELECT Order_Status FROM coffeeshop.Order_Drinks where Acc_Id= '"+Order_Id+ "';";
         try(Connection con = ConnectionDB.getConnection();
-        PreparedStatement pstm = con.preparinteStatement(sql);
-            // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id = ?;");
-            // pstm.setInt(1, cafe.getCafeId());
-            ResultSet rs = pstm.executeQuery(sql)) {
+        PreparedStatement pstm = con.prepareStatement(sql);
+                // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id
+                // = ?;");
+                // pstm.setInt(1, cafe.getCafeId());
+                ResultSet rs = pstm.executeQuery(sql)) {
             while (rs.next()) {
-                if (rs.getString("Order_Status").equals("Clear") ) {
+                if (rs.getString("Order_Status").equals("Clear")) {
                     count = 1;
                 } else {
                     count = 2;
                 }
             }
         } catch (Exception e) {
-            //TODO: handle exception
+            // TODO: handle exception
             return count;
         }
         if (count == 1) {
-            try(Connection con = ConnectionDB.getConnection();
-        PreparedStatement pstm = con.preparinteStatement("UPDATE coffeeshop.Order_drinks SET Order_Status = 'Exit' where(Order_Id= '"+ Order_Id + "');");) {
+            try (Connection con = ConnectionDB.getConnection();
+                    PreparedStatement pstm = con.prepareStatement(
+                            "UPDATE coffeeshop.Order_drinks SET Order_Status = 'Exit' where(Order_Id= '" + Order_Id
+                                    + "');");) {
                 int rs =pstm.executeUpdate();
             } catch (Exception e) {
                 //TODO: handle exception
             }
         }
+        return count;
     }
     public static void orderAmountByMonth( int year){
         int count = 0;
@@ -76,5 +80,40 @@ public class OrderDAL {
         System.out.println("+-----------------------------------+");
         System.out.printf("| %-10s | %-15s |\n", "Month", "Amount");
         System.out.println("+-----------------------------------+");
+    }
+    public static List<Order> Revenue(String year) {
+        // Cafe cafe = new Cafe();
+        List<Order> lid = new ArrayList<>();
+        try (Connection con = ConnectionDB.getConnection()) {
+            // PreparedStatement pstm = con.prepareStatement("select Total_Price from Order_Drinks where Order_Date=" + year + "group by Order_Date;");
+            PreparedStatement pstm = con.prepareStatement("SELECT Order_Date, SUM(Total_Price) FROM Order_Drinks where Order_Date = ? GROUP BY Order_Date;");
+            // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id = ?;");
+            pstm.setString(1,year);
+            ResultSet rs = pstm.executeQuery();
+            try {
+                if (rs.next()) {
+                    lid.add(getOrderDate(rs));
+                }
+            } catch (Exception e) {
+                System.out.println("error"+e);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+        return lid;
+    }
+
+    private static Order getOrderDate(ResultSet rs) {
+        Order year = new Order();
+        try {
+            year.setOrderDate(rs.getDate("Order_Date"));
+            year.setTotalPrice(rs.getDouble("SUM(Total_Price)"));
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            System.out.println("error"+e);
+        }
+        return year;
     }
 }

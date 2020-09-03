@@ -24,7 +24,6 @@ public class AccountUI {
                         System.out.println("|2.Manager Cafe             |");
                         System.out.println("|3.Manager Order            |");
                         System.out.println("|4.Logout                   |");
-                        System.out.println("|5.Exit                     |");
                         System.out.println("=============================");
                         System.out.print("   --> Enter your choice: ");
                         String chose = sc.nextLine();
@@ -54,6 +53,7 @@ public class AccountUI {
                             }
                                 
                             }
+                            break;
                             case "2":
                                 cls();
                                 while (true) {
@@ -100,7 +100,7 @@ public class AccountUI {
                                             OrderBL.showCafeById();
                                             break;
                                             case "2":
-                                            
+                                            OrderBL.showRevenue();
                                             break;
                                             case "0":
                                             System.exit(0);
@@ -111,7 +111,7 @@ public class AccountUI {
                                     }
                                 
                                 break;
-                            case "5":
+                            case "4":
                                 back = false;
                                 break;
                             case "0":

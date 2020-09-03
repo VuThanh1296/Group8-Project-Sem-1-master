@@ -115,7 +115,7 @@ public class AccountDAL {
         int id = -1;
         try {
             String strconn =
-            "jdbc:mysql://localhost:3306/coffeeshop?user=root&password=123456789";
+            "jdbc:mysql://localhost:3306/coffeeshop?user=root&password=0966853865";
             Connection conn = DriverManager.getConnection(strconn);
             // Connection conn = ConnectionDB.getConnection();
             Statement start = conn.createStatement();

@@ -14,6 +14,7 @@ public class Order {
     private Double Price;
     private int OrderStatus;
     private Date OrderDate;
+    private double TotalPrice;
     // private List<Cafe> cafes;
     // public Order(){
     //     OrderId = 0;
@@ -22,6 +23,12 @@ public class Order {
         
 
     // }
+    public void setTotalPrice(Double TotalPrice){
+        this.TotalPrice = TotalPrice;
+    }
+    public Double getTotalPrice(){
+        return TotalPrice;
+    }
     public void setCafeName(String CafeName) {
         this.CafeName = CafeName;
     }
