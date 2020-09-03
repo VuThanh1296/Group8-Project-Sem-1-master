@@ -118,10 +118,9 @@ public class CafeBL {
 
     }
 
-    public static void showAllCafe() {
+    public static void showAllCafe(List<Cafe> lst) {
         CafeBL cbl = new CafeBL();
         Scanner sc = new Scanner(System.in);
-        List<Cafe> lst = new CafeDAL().getALL();
         try {
 
             System.out.println("|==============================================================================|");
@@ -138,40 +137,13 @@ public class CafeBL {
                 System.out.println("|==============================================================================|");
 
             }
-            System.out.println("nhấn phím bất kỳ để quay lại!");
-            sc.nextLine();
+            
         } catch (Exception e) {
             System.out.println("erroe" + e);
         }
 
     }
-    public static void showAllCafeOrder(){
-        CafeBL cbl = new CafeBL();
-        Scanner sc = new Scanner(System.in);
-        List<Cafe> lst = new CafeDAL().getALL();
-        try {
-
-            System.out.println("|==============================================================================|");
-            System.out.println("|                            [CSMA] Group-08                                   |");
-            System.out.println("|==============================================================================|");
-            System.out.println("|                                Cafe list                                     |");
-            System.out.println("|==============================================================================|");
-            System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", "Cafe Id", "Cafe Name", "Cafe Price",
-                    "Cafe Available", "Cafe Status");
-            System.out.println("|==============================================================================|");
-            for (Cafe cafe : lst) {
-                System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", cafe.getCafeId(), cafe.getCafeName(),
-                        cafe.getCafePrice(), cafe.getCafeAvailable(), cafe.getCafeStatus());
-                System.out.println("|==============================================================================|");
-            }
-            System.out.println("mời chọn món");
-            sc.nextLine();
-        
-    } catch (Exception e) {
-        System.out.println("erroe" + e);
-    }
-
-    }
+   
 
     public static String InputString() {
         Scanner scanner = new Scanner(System.in);

@@ -9,15 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.xdevapi.Result;
+import java.sql.CallableStatement;
 
 import dev.manhnx.persistance.Account;
 
 public class AccountDAL {
     public List<Account> getAll() {
-        String sql = "select*from Account";
+        String sql = "select*from Accounts";
         List<Account> lst = new ArrayList<Account>();
         try {
             Connection con = ConnectionDB.getConnection();
@@ -30,6 +28,21 @@ public class AccountDAL {
             System.out.println("error" + e);
         }
         return lst;
+    }
+
+    public String getUserName(int accountID) {
+        String userName = "";
+        String sql = "Select full_name from accounts where acc_id = ?";
+        try (Connection con = ConnectionDB.getConnection(); CallableStatement csm = con.prepareCall(sql)) {
+            csm.setInt(1, accountID);
+            ResultSet rs = csm.executeQuery();
+            if (rs.next()) {
+                userName = rs.getString("full_name");
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return userName;
     }
 
     private Account getAccount(ResultSet rs) throws SQLException {
@@ -51,7 +64,7 @@ public class AccountDAL {
 
     public boolean updateAcc(Account account) {
         try {
-            String sql = "update Account set User_Password = ? where Acc_Id = ?";
+            String sql = "update Accounts set User_Password = ? where Acc_Id = ?";
             Connection con = ConnectionDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, account.getPassword());
@@ -66,7 +79,7 @@ public class AccountDAL {
 
     public boolean insertAccount(Account account) {
         try {
-            String sql = "INSERT INTO Account VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Accounts VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?)";
             Connection con = ConnectionDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, account.getAccId());
@@ -114,13 +127,12 @@ public class AccountDAL {
         String position = null;
         int id = -1;
         try {
-            String strconn =
-            "jdbc:mysql://localhost:3306/coffeeshop?user=root&password=123456789";
+            String strconn = "jdbc:mysql://localhost:3306/coffeeshop?user=root&password=123456789";
             Connection conn = DriverManager.getConnection(strconn);
             // Connection conn = ConnectionDB.getConnection();
             Statement start = conn.createStatement();
             ResultSet rs = start.executeQuery(
-                    "SELECT Acc_Id,User_Name FROM coffeeshop.account where User_Name = '" + username + "';");
+                    "SELECT Acc_Id,User_Name FROM coffeeshop.accounts where User_Name = '" + username + "';");
             while (rs.next()) {
                 if (username.equals(rs.getString("User_Name"))) {
                     id = rs.getInt("Acc_Id");

@@ -13,12 +13,11 @@ import javax.swing.text.html.CSS;
 
 import com.mysql.cj.xdevapi.Statement;
 
-import dev.manhnx.persistance.Account;
 import dev.manhnx.persistance.Cafe;
 import dev.manhnx.persistance.Order;
 
 public class OrderDAL {
-    public static List<Order> getId(int id) {
+    public  List<Order> getId(int id) {
         List<Order> lid = new ArrayList<>();
         try (Connection con = ConnectionDB.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("select*from ood where Order_Id=" + id + ";");
@@ -35,71 +34,56 @@ public class OrderDAL {
         return lid;
     }
 
-    private static Order getOrderById(ResultSet rs) throws SQLException {
+    public  Order getOrderById(ResultSet rs) throws SQLException {
         Order order = new Order();
         order.setOrderId(rs.getInt("Order_Id"));
         order.setAccId(rs.getInt("Acc_Id"));
         order.setOrderStatus(rs.getInt("Order_Status"));
-        order.setOrderDate(rs.getDate("Order_Date"));
+        order.setOrderDate(rs.getString("Order_Date"));
         order.setCafeName(rs.getString("Cafe_Name"));
         order.setAmount(rs.getInt("Amount"));
         order.setPrice(rs.getDouble("Price"));
         return order;
     }
-    
 
-    public static int createOrder(final int Acc_Id, final int Order_Id, final String Order_Status) {
-        int count = 0;
-        String sql = "SELECT Order_Status FROM coffeeshop.Order_Drinks where Acc_Id= '" + Order_Id + "';";
-        try (Connection con = ConnectionDB.getConnection();
-                PreparedStatement pstm = con.prepareStatement(sql);
-                // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id
-                // = ?;");
-                // pstm.setInt(1, cafe.getCafeId());
-                ResultSet rs = pstm.executeQuery(sql)) {
-            while (rs.next()) {
-                if (rs.getString("Order_Status").equals("clear")) {
-                    count = 1;
-                } else {
-                    count = 2;
-                }
+    public  void createOrder(List<Cafe> cflist, int Acc_Id) {
+
+        String sqlCrateOrder = "INSERT INTO `Order_drinks` (`Acc_id`,`Order_status`,`Order_Date`) VALUES ("+Acc_Id+","+2+","+LocalDate.now().toString()+")";
+        try (Connection con = ConnectionDB.getConnection();) {
+            CallableStatement cs = con.prepareCall(sqlCrateOrder);
+
+            cs.execute();
+            for (Cafe cafe : cflist) {
+                
+                String  sqlCrateOrderDetail = "INSERT INTO order_Details(order_id,cafe_id,amount,price) VALUES()";
+                cs = con.prepareCall(sqlCrateOrderDetail);
+                cs.execute();
             }
+
         } catch (Exception e) {
             // TODO: handle exception
-            return count;
+            System.out.println("Error!");
+            System.out.println(e.toString());
         }
-        if (count == 1) {
-            try (Connection con = ConnectionDB.getConnection();
-                    PreparedStatement pstm = con.prepareStatement(
-                            "UPDATE coffeeshop.Order_drinks SET Order_Status = 'Exit' where(Order_Id= '" + Order_Id
-                                    + "');");) {
-                int rs = pstm.executeUpdate();
-                if (rs == 1) {
 
-                }
-            } catch (Exception e) {
-                // TODO: handle exception
-                return count;
-            }
-            String sqlCrateOrder = "INSERT INTO coffeeshop.Order_drinks (Order_Date, Acc_id,Order_status ) VALUES (?, ?, ?);";
-            try (Connection con = ConnectionDB.getConnection();
-                    CallableStatement cs = con.prepareCall(sqlCrateOrder);) {
-
-                cs.setString(1, LocalDate.now().toString());
-                cs.setInt(2, Acc_Id);
-                cs.setInt(3, 2);
-                cs.execute();
-
-            } catch (Exception e) {
-                // TODO: handle exception
-                System.out.println("Error!");
-                System.out.println(e.toString());
-                return 0;
-            }
-
-        }
-        return count;
     }
+public   Order getCurrentOrderID()
+{
+    Order order = new Order();
+    String sql = "Select *  from coffeeshop.order_drinks order by order_id desc limit 1;";
+    try(Connection con = ConnectionDB.getConnection();
+    CallableStatement csm =con.prepareCall(sql)){
+    ResultSet rs = csm.executeQuery();
+    if(rs.next())
+    {
+       order = getOrderById(rs);
+
+    }
+    } catch (Exception e) {
+        //TODO: handle exception
+    }
+    return order;
+}
 
     public static void orderAmountByMonth(int year) {
         int count = 0;

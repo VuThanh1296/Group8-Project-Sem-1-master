@@ -1,5 +1,6 @@
 package dev.manhnx.dal;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,7 +50,7 @@ public class CafeDAL {
         cafeid.setCafeId(rs.getInt("Cafe_Id"));
         cafeid.setCafeName(rs.getString("Cafe_Name"));
         cafeid.setCafePrice(rs.getDouble("Cafe_Price"));
-        cafeid.setCafeAvailable(rs.getInt("Cafe_Available"));
+        cafeid.setCafeAvailable(rs.getInt("cafe_amount"));
         cafeid.setCafeStatus(rs.getInt("Cafe_Status"));
         return cafeid;
     }
@@ -58,7 +59,7 @@ public class CafeDAL {
         cafename.setCafeId(rs.getInt("Cafe_Id"));
         cafename.setCafeName(rs.getString("Cafe_Name"));
         cafename.setCafePrice(rs.getDouble("Cafe_Price"));
-        cafename.setCafeAvailable(rs.getInt("Cafe_Available"));
+        cafename.setCafeAvailable(rs.getInt("cafe_amount"));
         cafename.setCafeStatus(rs.getInt("Cafe_Status"));
         return cafename;
     }
@@ -68,7 +69,7 @@ public class CafeDAL {
         cafe.setCafeId(rs.getInt("Cafe_Id"));
         cafe.setCafeName(rs.getString("Cafe_Name"));
         cafe.setCafePrice(rs.getDouble("Cafe_Price"));
-        cafe.setCafeAvailable(rs.getInt("Cafe_Available"));
+        cafe.setCafeAvailable(rs.getInt("cafe_amount"));
         cafe.setCafeStatus(rs.getInt("Cafe_Status"));
         return cafe;
     }
@@ -90,7 +91,17 @@ public class CafeDAL {
         }
         return lst;
     }
-
+    public void updateAmount(int amount, int cafeID)
+    {
+        String sql = "UPDATE cafe as c set c.cafe_amount = c.cafe_amount - amount where c.cafe_id = ?;";
+        try(Connection con = ConnectionDB.getConnection();
+        CallableStatement csm = con.prepareCall(sql)) {
+            csm.setInt(1, cafeID);
+            csm.execute();
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+    }
     public boolean insertCafe(Cafe cafe) {
         try {
             String sql = "INSERT INTO Cafe VALUES (?, ?, ?, ?, ?)";
@@ -109,7 +120,7 @@ public class CafeDAL {
     }
     public boolean updateCafe(Cafe cafe) {
         try {
-            String sql = "update Caffe set Cafe_Id = ?, Cafe_Name = ?, Cafe_Price = ?, Cafe_Available = ?, Cafe_Status = ? where Cafe_Id = ?";
+            String sql = "update Caffe set Cafe_Id = ?, Cafe_Name = ?, Cafe_Price = ?, cafe_amount = ?, Cafe_Status = ? where Cafe_Id = ?";
             Connection con = ConnectionDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(6, cafe.getCafeId());
