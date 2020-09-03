@@ -29,9 +29,9 @@ public class App {
                 System.out.println("|=================================|");
                 System.out.println("|--------Login Coffee Shop--------|");
                 System.out.println("|=================================|");
-                System.out.print("USERNAME : ");
+                System.out.print("Username : ");
                 username = input();      
-                System.out.print("PASSWORD : "); 
+                System.out.print("Password : "); 
                 password = input();
                 int check = accountbl.login_check(username,password);
                 if (check == -1) {
