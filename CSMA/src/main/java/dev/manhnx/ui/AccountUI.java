@@ -114,8 +114,7 @@ public class AccountUI {
                             case "4":
                                 back = false;
                                 break;
-                            case "0":
-                                System.exit(0);
+                            
                             default:
                                 System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
                                 String nh = sc.nextLine();
@@ -131,16 +130,17 @@ public class AccountUI {
           System.out.println("=============================");
           System.out.println("|          Menu Staff       |");
           System.out.println("=============================");
-          System.out.println("|1.Manager Product          |");
-          System.out.println("|2.Manager Order            |");
+          System.out.println("|1.View menu                |");
+          System.out.println("|2.Order                    |");
           System.out.println("|3.Logout                   |");
-          System.out.println("|0.Exit                     |");
           System.out.println("=============================");
           System.out.print("   --> Enter your choice: ");
           String chose = sc.nextLine();
           switch (chose) {
               case "1":
+
               cls();
+              CafeBL.showAllCafe();
               while(true){
               Menu.Product_Staff();;
                     System.out.print("Enter the selection: ");
@@ -185,8 +185,7 @@ public class AccountUI {
               case "3":
                   back = false;
                   break;
-              case "0":
-                  System.exit(0);
+              
               default:
                   System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
                   final String nh = sc.nextLine();
