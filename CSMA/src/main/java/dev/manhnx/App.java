@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import dev.manhnx.bl.AccountBL;
-import dev.manhnx.bl.CafeBL;
 import dev.manhnx.dal.ConnectionDB;
-import dev.manhnx.dal.OrderDAL;
 import dev.manhnx.persistance.Account;
 import dev.manhnx.persistance.Cafe;
 import dev.manhnx.ui.AccountUI;
@@ -29,9 +27,9 @@ public class App {
                 System.out.println("|=================================|");
                 System.out.println("|--------Login Coffee Shop--------|");
                 System.out.println("|=================================|");
-                System.out.print("Username : ");
+                System.out.print("USERNAME : ");
                 username = input();      
-                System.out.print("Password : "); 
+                System.out.print("PASSWORD : "); 
                 password = input();
                 int check = accountbl.login_check(username,password);
                 if (check == -1) {
@@ -49,7 +47,6 @@ public class App {
         
     }
 
-   
     private static String input() {
         final Scanner input = new Scanner(System.in);
         String ch;

@@ -51,7 +51,7 @@ public class Cafe {
     public void setCafeAvailable(int cafeAvailable){
         this.cafeAvailable = cafeAvailable;
     }
-    public int getCafeAvailable(){
+    public int getCafeAmount(){
         return cafeAvailable;
     }
     // @Override

@@ -13,22 +13,13 @@ public class Order {
     private int Amount;
     private Double Price;
     private int OrderStatus;
-    private Date OrderDate;
-    private double TotalPrice;
-    // private List<Cafe> cafes;
+    private String OrderDate;
     // public Order(){
-    //     OrderId = 0;
-    //     OrderStatus = CREATE_NEW_ORDER_STATUS;
-    //     cafes = new ArrayList<>();
-        
+    // OrderId = 0;
+    // OrderStatus = CREATE_NEW_ORDER_STATUS;
+    // cafes = new ArrayList<>();
 
     // }
-    public void setTotalPrice(Double TotalPrice){
-        this.TotalPrice = TotalPrice;
-    }
-    public Double getTotalPrice(){
-        return TotalPrice;
-    }
     public void setCafeName(String CafeName) {
         this.CafeName = CafeName;
     }
@@ -36,6 +27,7 @@ public class Order {
     public String getCafeName() {
         return CafeName;
     }
+
     public void setAmount(int Amount) {
         this.Amount = Amount;
     }
@@ -43,6 +35,7 @@ public class Order {
     public int getAmount() {
         return Amount;
     }
+
     public void setPrice(Double Price) {
         this.Price = Price;
     }
@@ -50,6 +43,7 @@ public class Order {
     public Double getPrice() {
         return Price;
     }
+
     public void setOrderId(int orderId) {
         this.OrderId = orderId;
     }
@@ -58,12 +52,14 @@ public class Order {
         return OrderId;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.OrderDate = orderDate;
+    public void setOrderDate(String orderDate) {
+        OrderDate = orderDate;
     }
-
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return OrderDate;
+    }
+    public int getCafeId() {
+        return CafeId;
     }
 
     public void setOrderStatus(int orderStatus) {
@@ -73,33 +69,33 @@ public class Order {
     public int getOrderStatus() {
         return OrderStatus;
     }
-    public void setAccId(int accId){
+
+    public void setAccId(int accId) {
         this.AccId = accId;
     }
-    public int getAccId(){
+
+    public int getAccId() {
         return AccId;
     }
-    public void setCafeId (int cafeId){
+
+    public void setCafeId(int cafeId) {
         this.CafeId = cafeId;
     }
-    public int setCafeId(){
+
+    public int setCafeId() {
         return CafeId;
     }
+
     // public List<Cafe> getCafe(){
-    //     return cafes;
+    // return cafes;
     // }
     // public void addCafe(Cafe cafe){
-    //     if (cafes ==null) {
-    //         cafes = new ArrayList<>();
-    //     } 
-    //     cafes.add(cafe);
+    // if (cafes ==null) {
+    // cafes = new ArrayList<>();
     // }
-    public static void showTableClear(){
-        
+    // cafes.add(cafe);
+    // }
+    public static void showTableClear() {
+
     }
 }
-
-   
-
-   
-    
