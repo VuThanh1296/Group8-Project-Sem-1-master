@@ -110,7 +110,7 @@ public class CafeDAL {
             pstm.setInt(1, cafe.getCafeId());
             pstm.setString(2, cafe.getCafeName());
             pstm.setDouble(3, cafe.getCafePrice());
-            pstm.setInt(4, cafe.getCafeAvailable());
+            pstm.setInt(4, cafe.getCafeAmount());
             pstm.setInt(5, cafe.getCafeStatus());
             pstm.executeUpdate();
         } catch (Exception e) {
@@ -127,7 +127,7 @@ public class CafeDAL {
             pstm.setInt(1, cafe.getCafeId());
             pstm.setString(2, cafe.getCafeName());
             pstm.setDouble(3, cafe.getCafePrice());
-            pstm.setInt(4, cafe.getCafeAvailable());
+            pstm.setInt(4, cafe.getCafeAmount());
             pstm.setInt(5, cafe.getCafeStatus());
             pstm.executeUpdate();
         } catch (Exception e) {
