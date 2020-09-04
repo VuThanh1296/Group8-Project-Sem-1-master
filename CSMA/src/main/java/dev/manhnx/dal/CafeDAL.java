@@ -50,7 +50,7 @@ public class CafeDAL {
         cafeid.setCafeId(rs.getInt("Cafe_Id"));
         cafeid.setCafeName(rs.getString("Cafe_Name"));
         cafeid.setCafePrice(rs.getDouble("Cafe_Price"));
-        cafeid.setCafeAvailable(rs.getInt("cafe_amount"));
+        cafeid.setCafeAmount(rs.getInt("cafe_amount"));
         cafeid.setCafeStatus(rs.getInt("Cafe_Status"));
         return cafeid;
     }
@@ -59,7 +59,7 @@ public class CafeDAL {
         cafename.setCafeId(rs.getInt("Cafe_Id"));
         cafename.setCafeName(rs.getString("Cafe_Name"));
         cafename.setCafePrice(rs.getDouble("Cafe_Price"));
-        cafename.setCafeAvailable(rs.getInt("cafe_amount"));
+        cafename.setCafeAmount(rs.getInt("cafe_amount"));
         cafename.setCafeStatus(rs.getInt("Cafe_Status"));
         return cafename;
     }
@@ -69,7 +69,7 @@ public class CafeDAL {
         cafe.setCafeId(rs.getInt("Cafe_Id"));
         cafe.setCafeName(rs.getString("Cafe_Name"));
         cafe.setCafePrice(rs.getDouble("Cafe_Price"));
-        cafe.setCafeAvailable(rs.getInt("cafe_amount"));
+        cafe.setCafeAmount(rs.getInt("cafe_amount"));
         cafe.setCafeStatus(rs.getInt("Cafe_Status"));
         return cafe;
     }

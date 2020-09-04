@@ -137,10 +137,9 @@ public class AccountUI {
             System.out.println("=============================");
             System.out.println("|          Menu Staff       |");
             System.out.println("=============================");
-            System.out.println("|1.Manager Product          |");
+            System.out.println("|1.View Menu                |");
             System.out.println("|2.Manager Order            |");
-            System.out.println("|3.Logout                   |");
-            System.out.println("|0.Exit                     |");
+            System.out.println("|0.Logout                   |");
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
             String chose = sc.nextLine();
@@ -193,9 +192,6 @@ public class AccountUI {
                                 System.exit(0);
                         }
                     }
-                    break;
-                case "3":
-                    back = false;
                     break;
                 case "0":
                     System.exit(0);

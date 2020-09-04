@@ -49,7 +49,7 @@ public class CafeBL {
         System.out.print("Cafe Price:");
         cafe.setCafePrice(InputDouble());
         System.out.print("Available: : ");
-        cafe.setCafeAvailable(InputInt());
+        cafe.setCafeAmount(InputInt());
         return cafe;
     }
 
@@ -77,9 +77,9 @@ public class CafeBL {
         System.out.print("New Cafe_Name: ");
         cafe.setCafeName(sc.nextLine());
         System.out.print("New Cafe_Price: ");
-        cafe.setCafeAvailable(sc.nextInt());
+        cafe.setCafeAmount(sc.nextInt());
         System.out.print("New Cafe_Available: ");
-        cafe.setCafeAvailable(sc.nextInt());
+        cafe.setCafeAmount(sc.nextInt());
         System.out.print("New Cafe_Status: ");
         cafe.setCafeStatus(sc.nextInt());
         sc.close();
@@ -182,7 +182,7 @@ public class CafeBL {
             System.out.println("|==============================================================================|");
             System.out.println("|                                Cafe list                                     |");
             System.out.println("|==============================================================================|");
-            System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", "Cafe Id", "Cafe Name", "Cafe Price",
+            System.out.printf(" | %-7s | %-20s | %-10s | %-15s | %-12s | \n", "Cafe Id", "Cafe Name", "Cafe Price",
                     "Cafe Amount", "Cafe Status");
             System.out.println("|==============================================================================|");
             for (Cafe cafe : lis) {
