@@ -46,6 +46,8 @@ public class AccountUI {
                                     break;
                                 case "2":
                                     AccountBL.update();
+                                    System.out.println("Press enter to back!");
+                                    sc.nextLine();
                                     break;
                                 case "3":
                                     AccountBL.showAllAccount();
