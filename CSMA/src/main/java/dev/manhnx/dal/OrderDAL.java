@@ -87,12 +87,12 @@ public class OrderDAL {
         return order;
     }
 
-    public static void orderAmountByMonth(int year) {
-        int count = 0;
-        System.out.println("+-----------------------------------+");
-        System.out.println("|              " + year + "         |");
-        System.out.println("+-----------------------------------+");
-        System.out.printf("| %-10s | %-15s |\n", "Month", "Amount");
-        System.out.println("+-----------------------------------+");
-    }
+//     public static void orderAmountByMonth(int year) {
+//         int count = 0;
+//         System.out.println("+-----------------------------------+");
+//         System.out.println("|              " + year + "         |");
+//         System.out.println("+-----------------------------------+");
+//         System.out.printf("| %-10s | %-15s |\n", "Month", "Amount");
+//         System.out.println("+-----------------------------------+");
+//     }
 }

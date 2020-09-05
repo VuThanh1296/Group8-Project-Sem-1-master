@@ -164,6 +164,7 @@ public class AccountUI {
                                     break;
                                 case "0":
                                     System.exit(0);
+                                    break;
                             }
                         }
                     }
@@ -191,7 +192,8 @@ public class AccountUI {
                     }
                     break;
                 case "0":
-                    System.exit(0);
+                  back = false;
+                    break;
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
                     final String nh = sc.nextLine();
