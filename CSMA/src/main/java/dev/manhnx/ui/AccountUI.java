@@ -51,6 +51,8 @@ public class AccountUI {
                                     break;
                                 case "3":
                                     AccountBL.showAllAccount();
+                                    System.out.println("Press enter to back!");
+                                    sc.nextLine();
                                     break;
                                 case "0":
                                     System.exit(0);
@@ -58,6 +60,7 @@ public class AccountUI {
                         }
 
                     }
+                    break;
                 case "2":
                     cls();
                     while (true) {
@@ -78,16 +81,18 @@ public class AccountUI {
                                 case "3":
                                 List<Cafe> cafes = new CafeBL().getALLCafe();
                                 CafeBL.showAllCafe(cafes);
-                                    ;
+                                System.out.println("Press enter to back!");
+                                sc.nextLine();
+                                    
                                     break;
                                 case "4":
-                                    CafeBL.showCafeById();
+                                    CafeBL.showCafeByName();
                                     break;
 
                                 case "0":
                                     System.exit(0);
                             }
-                            System.out.println("nhấn phím bất kỳ để quay lại");
+                            // System.out.println("nhấn phím bất kỳ để quay lại");
                         }
 
                     }
@@ -118,10 +123,10 @@ public class AccountUI {
                     }
 
                     break;
-                case "5":
+                case "4":
                     back = false;
                     break;
-                case "0":
+                case "5":
                     System.exit(0);
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
