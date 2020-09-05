@@ -1,7 +1,7 @@
 package dev.manhnx.persistance;
 
 public class Cafe {
-    private int cafeId;
+    private Integer cafeId;
     private int cafeStatus;
     private String cafeName;
     private double cafePrice;
@@ -24,10 +24,10 @@ public class Cafe {
     public int getAmount(){
         return amount;
     }
-    public void setCafeId(int cafeId){
+    public void setCafeId(Integer cafeId){
         this.cafeId = cafeId;
     }
-    public int getCafeId(){
+    public Integer getCafeId(){
         return cafeId;
     }
     public void setCafeName(String cafeName){

@@ -74,8 +74,7 @@ public class AccountUI {
                                     CafeBL.updateCafe();
                                     break;
                                 case "3":
-                                List<Cafe> cafes = new CafeBL().getALLCafe();
-                                CafeBL.showAllCafe(cafes);
+                                CafeBL.showAllCafe();
                                     ;
                                     break;
                                 case "4":
@@ -156,9 +155,7 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                List<Cafe> cafes = new CafeBL().getALLCafe();
-
-                                    CafeBL.showAllCafe(cafes);
+                                    CafeBL.showAllCafe();
                                     System.out.println("nhấn phím bất kỳ để quay lại!");
                                     sc.nextLine();
                                     break;

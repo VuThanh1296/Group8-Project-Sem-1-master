@@ -118,7 +118,8 @@ public class CafeBL {
 
     }
 
-    public static void showAllCafe(List<Cafe> lst) {
+    public static void showAllCafe() {
+        List<Cafe> cafes = new CafeBL().getALLCafe();
         CafeBL cbl = new CafeBL();
         Scanner sc = new Scanner(System.in);
         try {
@@ -131,7 +132,7 @@ public class CafeBL {
             System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", "Cafe Id", "Cafe Name", "Cafe Price",
                     "Cafe Amount", "Cafe Status");
             System.out.println("|==============================================================================|");
-            for (Cafe cafe : lst) {
+            for (Cafe cafe : cafes) {
                 System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", cafe.getCafeId(), cafe.getCafeName(),
                         cafe.getCafePrice(), cafe.getCafeAmount(), cafe.getCafeStatus());
                 System.out.println("|==============================================================================|");
