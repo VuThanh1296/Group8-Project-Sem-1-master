@@ -43,13 +43,14 @@ public class OrderDAL {
         return order;
     }
 
+    
     public void createOrder(List<Cafe> cflist, int Acc_Id) {
 
         String sqlCrateOrder = "{call insertOrder(?,?,?)};";
         try (Connection con = ConnectionDB.getConnection();) {
             CallableStatement cs = con.prepareCall(sqlCrateOrder);
             cs.setInt(1, Acc_Id);
-            cs.setInt(2,2);;
+            cs.setInt(2,2);
             String date = LocalDate.now().toString();
             cs.setString(3,date);
             cs.execute();
