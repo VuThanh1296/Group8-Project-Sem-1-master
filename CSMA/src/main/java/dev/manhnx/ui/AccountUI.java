@@ -46,13 +46,9 @@ public class AccountUI {
                                     break;
                                 case "2":
                                     AccountBL.update();
-                                    System.out.println("Press enter to back!");
-                                    sc.nextLine();
                                     break;
                                 case "3":
                                     AccountBL.showAllAccount();
-                                    System.out.println("Press enter to back!");
-                                    sc.nextLine();
                                     break;
                                 case "0":
                                     System.exit(0);
@@ -60,7 +56,6 @@ public class AccountUI {
                         }
 
                     }
-                    break;
                 case "2":
                     cls();
                     while (true) {
@@ -79,20 +74,17 @@ public class AccountUI {
                                     CafeBL.updateCafe();
                                     break;
                                 case "3":
-                                List<Cafe> cafes = new CafeBL().getALLCafe();
-                                CafeBL.showAllCafe(cafes);
-                                System.out.println("Press enter to back!");
-                                sc.nextLine();
-                                    
+                                CafeBL.showAllCafe();
+                                    ;
                                     break;
                                 case "4":
-                                    CafeBL.showCafeByName();
+                                    CafeBL.showCafeById();
                                     break;
 
                                 case "0":
                                     System.exit(0);
                             }
-                            // System.out.println("nhấn phím bất kỳ để quay lại");
+                            System.out.println("nhấn phím bất kỳ để quay lại");
                         }
 
                     }
@@ -123,10 +115,10 @@ public class AccountUI {
                     }
 
                     break;
-                case "4":
+                case "5":
                     back = false;
                     break;
-                case "5":
+                case "0":
                     System.exit(0);
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
@@ -144,10 +136,9 @@ public class AccountUI {
             System.out.println("=============================");
             System.out.println("|          Menu Staff       |");
             System.out.println("=============================");
-            System.out.println("|1.Manager Product          |");
+            System.out.println("|1.View Menu                |");
             System.out.println("|2.Manager Order            |");
-            System.out.println("|3.Logout                   |");
-            System.out.println("|0.Exit                     |");
+            System.out.println("|0.Logout                   |");
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
             String chose = sc.nextLine();
@@ -164,9 +155,7 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                List<Cafe> cafes = new CafeBL().getALLCafe();
-
-                                    CafeBL.showAllCafe(cafes);
+                                    CafeBL.showAllCafe();
                                     System.out.println("nhấn phím bất kỳ để quay lại!");
                                     sc.nextLine();
                                     break;
@@ -175,6 +164,7 @@ public class AccountUI {
                                     break;
                                 case "0":
                                     System.exit(0);
+                                    break;
                             }
                         }
                     }
@@ -201,11 +191,9 @@ public class AccountUI {
                         }
                     }
                     break;
-                case "3":
-                    back = false;
-                    break;
                 case "0":
-                    System.exit(0);
+                  back = false;
+                    break;
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
                     final String nh = sc.nextLine();

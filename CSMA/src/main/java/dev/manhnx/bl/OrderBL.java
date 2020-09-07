@@ -72,12 +72,12 @@ public class OrderBL {
         boolean isContinueAddCafeToOrder = true;
         List<Cafe> cafesOrder = new ArrayList<>(); 
         while (isContinueAddCafeToOrder) {
-            List<Cafe> cafes = new CafeBL().getALLCafe();
+            
             Cafe cafe = new Cafe();
-            CafeBL.showAllCafe(cafes);
+            CafeBL.showAllCafe();
             System.out.print("Enter cafe id : ");
             Cafe_Id = getIntegerNumber();
-            cafe.setCafeId(Cafe_Id);
+            cafe = getCafe(Cafe_Id);
             System.out.println("Enter amount : ");
             amount = getIntegerNumber();
             cafe.setAmount(amount);
@@ -86,30 +86,42 @@ public class OrderBL {
             String yn = yesno("Do you want to add cafe to order?(y/n)?");
             if (yn.equalsIgnoreCase("n")) {
                 orderDAL.createOrder(cafesOrder, staffID);
-                System.out.println(orderDAL.getCurrentOrderID().getOrderId());
                 break;
             }
         }
-    
-        showOrder(cafesOrder,orderDAL.getCurrentOrderID().getOrderId(),staffID);
+        showOrder(cafesOrder,staffID);
 
     }
-    
-    public static void showOrder(List<Cafe> cafes,int orderID, int staffID) {
+    private static Cafe getCafe(int cafeID)
+    {   List<Cafe> cafes = new CafeBL().getALLCafe();
+        Cafe cafeOut = new Cafe();
+        for (Cafe cafe : cafes) {
+            if(cafe.getCafeId().equals(cafeID))
+            {
+                cafeOut = cafe;
+                break;
+            }
+        }
+        return cafeOut;
+    }
+    public static void showOrder(List<Cafe> cafes, int staffID) {
         String line = "----------------------------------------------------";
         Order order = orderDAL.getCurrentOrderID();
         System.out.println(line);
         printCenter(line, "Order Detail");
         System.out.println(line);
-        System.out.println("| Order ID : " + orderID);
+        System.out.println("| Order ID : " + order.getOrderId());
         System.out.println("| Staff name : " + getStaffName(staffID));
         System.out.println("| Order Date : "+order.getOrderDate());
         System.out.println(line);
+        double totalBill = 0;
         for (Cafe cafe : cafes) {
         System.out.println("| Product Name : "+cafe.getCafeName());
         System.out.println("| Product amount : "+cafe.getAmount());
         System.out.println("| Product price : "+cafe.getCafePrice());
-        }
+        totalBill+= cafe.getAmount() * cafe.getCafePrice();
+    }
+        System.out.println("| Total bill : " + totalBill);
         System.out.println(line);
         sc.nextLine();
     }
@@ -127,16 +139,7 @@ public class OrderBL {
         System.out.printf(contentOut, startPrintPoint, "");
     }
 
-    static Cafe getCafe(List<Cafe> cafes, Integer Cafe_Id) {
-        Cafe cf = null;
-        for (Cafe cafe : cafes) {
-            if (Cafe_Id.equals(cafe.getCafeId())) {
-                cf = cafe;
-                break;
-            }
-        }
-        return cf;
-    }
+   
 
     static int getIntegerNumber() {
         int number = 0;

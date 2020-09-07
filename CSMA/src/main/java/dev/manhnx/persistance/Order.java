@@ -12,7 +12,7 @@ public class Order {
     private String CafeName;
     private int Amount;
     private Double Price;
-    private int OrderStatus;
+    private String OrderStatus;
     private String OrderDate;
     // public Order(){
     // OrderId = 0;
@@ -62,11 +62,11 @@ public class Order {
         return CafeId;
     }
 
-    public void setOrderStatus(int orderStatus) {
+    public void setOrderStatus(String orderStatus) {
         this.OrderStatus = orderStatus;
     }
 
-    public int getOrderStatus() {
+    public String getOrderStatus() {
         return OrderStatus;
     }
 

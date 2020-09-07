@@ -1,19 +1,19 @@
 package dev.manhnx.persistance;
 
 public class Cafe {
-    private int cafeId;
+    private Integer cafeId;
     private int cafeStatus;
-    private int cafeAvailable;
     private String cafeName;
     private double cafePrice;
     private int amount;
+    private int cafeAmount;
     public Cafe(){
 
     }
-    public Cafe(int cafeId,int cafeStatus,int cafeAvailable,String cafeName,double cafePrice,int amount){
+    public Cafe(int cafeId,int cafeStatus,int cafeAmount,String cafeName,double cafePrice,int amount){
         this.cafeId = cafeId;
         this.cafeStatus = cafeStatus;
-        this.cafeAvailable = cafeAvailable;
+        this.cafeAmount = cafeAmount;
         this.cafeName = cafeName;
         this.cafePrice = cafePrice;
         this.amount = amount;
@@ -24,10 +24,10 @@ public class Cafe {
     public int getAmount(){
         return amount;
     }
-    public void setCafeId(int cafeId){
+    public void setCafeId(Integer cafeId){
         this.cafeId = cafeId;
     }
-    public int getCafeId(){
+    public Integer getCafeId(){
         return cafeId;
     }
     public void setCafeName(String cafeName){
@@ -48,11 +48,11 @@ public class Cafe {
     public double getCafePrice() {
         return cafePrice;
     }
-    public void setCafeAvailable(int cafeAvailable){
-        this.cafeAvailable = cafeAvailable;
+    public void setCafeAmount(int cafeAmount){
+        this.cafeAmount = cafeAmount;
     }
     public int getCafeAmount(){
-        return cafeAvailable;
+        return cafeAmount;
     }
     // @Override
     // public String toString() {

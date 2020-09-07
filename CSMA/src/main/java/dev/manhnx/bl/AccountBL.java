@@ -68,7 +68,7 @@ public class AccountBL {
                         "=================================================================================================================================================================================================");
 
             }
-            // sc.nextLine();
+            sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" + e);
         }
@@ -81,7 +81,6 @@ public class AccountBL {
             AccountBL abl = new AccountBL();
             // abl.createAccount(inputAcc());
             dal.insertAccount(inputAcc());
-            System.out.println("Insert complete");
             sc.nextLine();
         } catch (Exception e) {
             System.out.println("error" + e);
@@ -121,11 +120,11 @@ public class AccountBL {
     public static void update() {
         // AccountBL abl = new AccountBL();
         Scanner sc = new Scanner(System.in);
-        try {dal.updateAcc(inputInfo()) ;
+        if (dal.updateAcc(inputInfo())) {
             System.out.println("update complete");
 
-        } catch(Exception e) {
-            System.out.println("error"+e);
+        } else {
+            System.out.println("error");
         }
 
         sc.nextLine();
@@ -139,7 +138,7 @@ public class AccountBL {
         account.setPassword(sc.nextLine());
         System.out.print("Acc_Id: ");
         account.setAccId(sc.nextInt());
-        
+        sc.close();
         return account;
     }
 
