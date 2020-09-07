@@ -95,7 +95,4 @@ public class Order {
     // }
     // cafes.add(cafe);
     // }
-    public static void showTableClear() {
-
-    }
 }

@@ -61,14 +61,13 @@ public class OrderBL {
     }
 
     public static void createOrder(int staffID) {
-        int Order_Id;
+        // int Order_Id;
         String order_Status;
         int Cafe_Id;
         int amount;
-        System.out.println(" Enter Table(Order_id): ");
-        Order_Id = input_int();
-        System.out.println("Note(status) : ");
-        order_Status = sc.nextLine();
+        // System.out.println(" Enter Table(Order_id): ");
+        // Order_Id = input_int();
+       
         boolean isContinueAddCafeToOrder = true;
         List<Cafe> cafesOrder = new ArrayList<>(); 
         while (isContinueAddCafeToOrder) {
@@ -81,6 +80,8 @@ public class OrderBL {
             System.out.println("Enter amount : ");
             amount = getIntegerNumber();
             cafe.setAmount(amount);
+            System.out.println("Note(status) : ");
+            order_Status = sc.nextLine();
             cafesOrder.add(cafe);
             new CafeDAL().updateAmount(amount, Cafe_Id);
             String yn = yesno("Do you want to add cafe to order?(y/n)?");
@@ -90,7 +91,6 @@ public class OrderBL {
             }
         }
         showOrder(cafesOrder,staffID);
-
     }
     private static Cafe getCafe(int cafeID)
     {   List<Cafe> cafes = new CafeBL().getALLCafe();
@@ -152,6 +152,21 @@ public class OrderBL {
                 System.out.println("Data type input is wrong!");
             }
         return number;
+    }
+    public static void updateOrder(int Order_id,int Cafe_Id,int Amount) {
+           Order order = new Order();
+           OrderBL.showOrder(Order_id,Cafe_Id,Amount);
+            
+        }
+    // }
+    // public static Order inputUpdateOrder() {
+    //     Order order = new Order();
+    //     Scanner sc = new Scanner(System.in)
+    //     System.out.println("");
+    //     return order;
+    // }
+
+    private static void showOrder(int order_id, int cafe_Id, int amount) {
     }
 
     public static String yesno(String content) {

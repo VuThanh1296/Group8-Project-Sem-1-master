@@ -74,7 +74,7 @@ public class AccountUI {
                                     CafeBL.updateCafe();
                                     break;
                                 case "3":
-                                CafeBL.showAllCafe();
+                                    CafeBL.showAllCafe();
                                     ;
                                     break;
                                 case "4":
@@ -147,7 +147,6 @@ public class AccountUI {
                     cls();
                     while (true) {
                         Menu.Product_Staff();
-                        ;
                         System.out.print("Enter the selection: ");
                         chose = sc.nextLine();
                         if (chose.equals("0") == true) {
@@ -155,12 +154,12 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
+                                CafeBL.showCafeByName();
+                                break;
+                                case "2":
                                     CafeBL.showAllCafe();
                                     System.out.println("nhấn phím bất kỳ để quay lại!");
                                     sc.nextLine();
-                                    break;
-                                case "2":
-                                    CafeBL.showCafeByName();
                                     break;
                                 case "0":
                                     System.exit(0);
@@ -171,28 +170,34 @@ public class AccountUI {
                     break;
 
                 case "2":
-                    cls();
-                    Menu.Order_Staff();
-                    ;
-                    System.out.print("Enter the selection: ");
-                    chose = sc.nextLine();
-                    if (chose.equals("0") == true) {
-                        break;
-                    } else {
-                        switch (chose) {
-                            case "1":
-                                OrderBL.createOrder(staffID);
-                                break;
-                            case "2":
+                    while (true) {
+                        cls();
+                        Menu.Order_Staff();
+                        ;
+                        System.out.print("Enter the selection: ");
+                        chose = sc.nextLine();
+                        if (chose.equals("0") == true) {
+                            break;
+                        } else {
+                            switch (chose) {
+                                case "1":
+                                    OrderBL.createOrder(staffID);
+                                    System.out.println("Create Bill Comple!!!");
+                                    sc.nextLine();
+                                    break;
+                                case "2":
 
-                                break;
-                            case "0":
-                                System.exit(0);
+                                    break;
+                                case "0":
+                                    System.exit(0);
+                                    break;
+                            }
                         }
+
                     }
                     break;
                 case "0":
-                  back = false;
+                    back = false;
                     break;
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");

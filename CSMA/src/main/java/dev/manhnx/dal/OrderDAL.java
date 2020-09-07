@@ -13,6 +13,7 @@ import javax.swing.text.html.CSS;
 
 import com.mysql.cj.xdevapi.Statement;
 
+import dev.manhnx.bl.OrderBL;
 import dev.manhnx.persistance.Cafe;
 import dev.manhnx.persistance.Order;
 
@@ -76,8 +77,8 @@ public class OrderDAL {
     public Order getCurrentOrderID() {
         Order order = new Order();
         String sql = "Select *  from coffeeshop.order_drinks order by order_id desc limit 1;";
-        try (Connection con = ConnectionDB.getConnection();
-         CallableStatement csm = con.prepareCall(sql)) {
+        try (Connection con = ConnectionDB.getConnection();){
+            CallableStatement csm = con.prepareCall(sql);
             ResultSet rs = csm.executeQuery();
             if (rs.next()) {
                 order = getOrder(rs);
@@ -86,6 +87,24 @@ public class OrderDAL {
            e.printStackTrace();
         }
         return order;
+    }
+    public static void updateOrder(int order_id, int Cafe_Id, int Amount)
+    {
+        
+        String sql = "update Order_Details set Cafe_Id =? ,Amount= ? where Order_ID =? ";
+        try (Connection con = ConnectionDB.getConnection();
+        CallableStatement cs = con.prepareCall(sql)){
+            cs.setInt(1, order_id);
+            cs.setInt(2, Cafe_Id);
+            cs.setInt(3, Amount);
+            cs.execute();
+            // ResultSet rs = csm.executeQuery();
+
+        } catch (Exception e) {
+            //TODO: handle exception
+            System.out.println("Error!");
+            System.out.println(e.toString());
+        }
     }
 
 //     public static void orderAmountByMonth(int year) {

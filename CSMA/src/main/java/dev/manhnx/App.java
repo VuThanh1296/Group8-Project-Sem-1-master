@@ -1,17 +1,10 @@
 package dev.manhnx;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
 import java.util.Scanner;
-
 import dev.manhnx.bl.AccountBL;
-import dev.manhnx.dal.ConnectionDB;
-import dev.manhnx.persistance.Account;
-import dev.manhnx.persistance.Cafe;
 import dev.manhnx.ui.AccountUI;
-import dev.manhnx.ui.Menu;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -72,10 +65,6 @@ public class App {
         }
     }
 
-    // private static void showAllAccount() throws SQLException {
-    // AccountBL abl = new AccountBL();
-    // abl.getAllAccount();
-
-    // }
+   
 
 }
