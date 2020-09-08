@@ -68,7 +68,7 @@ public class AccountBL {
                         "=================================================================================================================================================================================================");
 
             }
-            sc.nextLine();
+            // sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" + e);
         }
@@ -81,7 +81,8 @@ public class AccountBL {
             AccountBL abl = new AccountBL();
             // abl.createAccount(inputAcc());
             dal.insertAccount(inputAcc());
-            sc.nextLine();
+            System.out.println("Insert complete!");
+            // sc.nextLine();
         } catch (Exception e) {
             System.out.println("error" + e);
         }

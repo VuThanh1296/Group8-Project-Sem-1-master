@@ -127,7 +127,7 @@ public class AccountDAL {
         String position = null;
         int id = -1;
         try {
-            String strconn = "jdbc:mysql://localhost:3306/coffeeshop?user=root&password=123456789";
+            String strconn = "jdbc:mysql://localhost:3306/coffeeshop?user=root&password=0966853865";
             Connection conn = DriverManager.getConnection(strconn);
             // Connection conn = ConnectionDB.getConnection();
             Statement start = conn.createStatement();
@@ -146,7 +146,7 @@ public class AccountDAL {
                 return id = -1;
             } else {
 
-                rs = start.executeQuery("SELECT User_Password FROM coffeeshop.account where Acc_Id = '" + id + "';");
+                rs = start.executeQuery("SELECT User_Password FROM coffeeshop.accounts where Acc_Id = '" + id + "';");
                 while (rs.next()) {
                     if (password.equals(rs.getString("User_Password"))) {
                         return id;

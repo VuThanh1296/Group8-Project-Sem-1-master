@@ -35,6 +35,7 @@ public class CafeBL {
         System.out.println("Insert new Cafe:");
         try {
             cbl.addCafe(inputCafe());
+            System.out.println("Insert complete!");
         } catch (Exception e) {
             System.out.println("error" + e);
         }

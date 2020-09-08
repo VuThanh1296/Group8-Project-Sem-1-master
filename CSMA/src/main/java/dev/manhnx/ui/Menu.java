@@ -45,8 +45,8 @@ public class Menu {
         System.out.println("=============================");
         System.out.println("|        Manager Product    |");
         System.out.println("=============================");
-        System.out.println("|1.Show Product             |");
-        System.out.println("|2.Search Product           |");
+        System.out.println("|1.Search Product           |");
+        System.out.println("|2.Show Product             |");
         System.out.println("|0.Exit                     |");
         System.out.println("=============================");
     }
@@ -58,7 +58,6 @@ public class Menu {
         System.out.println("=============================");
         System.out.println("|1.Cearte Bill              |");
         System.out.println("|2.Update Bill              |");
-        System.out.println("|3.Complete Bill            |");
         System.out.println("|0.Exit                     |");
         System.out.println("=============================");
     }
