@@ -1,14 +1,10 @@
 package dev.manhnx.ui;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
-import dev.manhnx.ui.*;
 import dev.manhnx.bl.AccountBL;
 import dev.manhnx.bl.CafeBL;
 import dev.manhnx.bl.OrderBL;
-import dev.manhnx.dal.AccountDAL;
-import dev.manhnx.persistance.Cafe;
 
 public class AccountUI {
     static Scanner sc = new Scanner(System.in);
@@ -25,8 +21,7 @@ public class AccountUI {
             System.out.println("|1.Manager Staff            |");
             System.out.println("|2.Manager Cafe             |");
             System.out.println("|3.Manager Order            |");
-            System.out.println("|4.Logout                   |");
-            System.out.println("|5.Exit                     |");
+            System.out.println("|0.Logout                   |");
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
             String chose = sc.nextLine();
@@ -115,14 +110,12 @@ public class AccountUI {
                     }
 
                     break;
-                case "5":
+                case "0":
                     back = false;
                     break;
-                case "0":
-                    System.exit(0);
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
-                    String nh = sc.nextLine();
+                    sc.nextLine();
             }
         }
     }
@@ -154,8 +147,8 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                CafeBL.showCafeByName();
-                                break;
+                                    CafeBL.showCafeByName();
+                                    break;
                                 case "2":
                                     CafeBL.showAllCafe();
                                     System.out.println("nhấn phím bất kỳ để quay lại!");
@@ -201,7 +194,7 @@ public class AccountUI {
                     break;
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
-                    final String nh = sc.nextLine();
+                    sc.nextLine();
             }
         }
     }
