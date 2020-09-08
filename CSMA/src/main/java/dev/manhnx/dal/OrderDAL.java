@@ -21,7 +21,7 @@ public class OrderDAL {
     public List<Order> getId(int id) {
         List<Order> lid = new ArrayList<>();
         try (Connection con = ConnectionDB.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("select*from order_details inner join  where Order_Id=" + id + ";");
+            PreparedStatement pstm = con.prepareStatement("select*from ood  where Order_Id=" + id + ";");
             // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id
             // = ?;");
             // pstm.setInt(1, cafe.getCafeId());
@@ -38,9 +38,10 @@ public class OrderDAL {
     public Order getOrder(ResultSet rs) throws SQLException {
         Order order = new Order();
         order.setOrderId(rs.getInt("Order_Id"));
+        order.setOrderStatus(rs.getString("Order_Status"));
+
         // order.setAccId(rs.getInt("Acc_Id"));
         order.setCafeId(rs.getInt("cafe_id"));
-        // order.setOrderStatus(rs.getString("Order_Status"));
         order.setAmount(rs.getInt("amount"));
         order.setPrice(rs.getDouble("price"));
         // order.setOrderDate(rs.getString("Order_Date"));
