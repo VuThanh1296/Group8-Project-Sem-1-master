@@ -42,16 +42,16 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    AccountBL.insertAcc();
+                                    AccountUIFunction.insertAcc();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
 
                                     break;
                                 case "2":
-                                    AccountBL.update();
+                                    AccountUIFunction.update();
                                     break;
                                 case "3":
-                                    AccountBL.showAllAccount();
+                                    AccountUIFunction.showAllAccount();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
                                     break;
@@ -74,20 +74,20 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    CafeBL.insertCafe();
+                                    CafeUIFunction.insertCafe();
                                     System.out.println("Press enter to continue!");
                                     sc.nextLine();
                                     break;
                                 case "2":
-                                    CafeBL.updateCafe();
+                                    CafeUIFunction.updateCafe();
                                     break;
                                 case "3":
-                                    CafeBL.showAllCafe();
+                                    CafeUIFunction.showAllCafe();
                                     System.out.println("Press enter to continue!");
                                     sc.nextLine();
                                     break;
                                 case "4":
-                                    CafeBL.showCafeById();
+                                    CafeUIFunction.showCafeById();
                                     break;
 
                                 case "0":
@@ -110,7 +110,7 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    OrderBL.showOrderById();
+                                    OrderUIFuction.showOrderById();
                                     break;
                                 case "2":
 
@@ -163,10 +163,10 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                CafeBL.showCafeByName();
+                                CafeUIFunction.showCafeByName();
                                 break;
                                 case "2":
-                                    CafeBL.showAllCafe();
+                                    CafeUIFunction.showAllCafe();
                                     System.out.println("nhấn phím bất kỳ để quay lại!");
                                     sc.nextLine();
                                     break;
@@ -190,7 +190,7 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    OrderBL.createOrder(staffID);
+                                    OrderUIFuction.createOrder(staffID);
                                     System.out.println("Create Bill Comple!!!");
                                     sc.nextLine();
                                     break;

@@ -18,7 +18,7 @@ import dev.manhnx.persistance.Cafe;
 import dev.manhnx.persistance.Order;
 
 public class OrderDAL {
-    public List<Order> getId(int id) {
+    public static List<Order> getId(int id) {
         List<Order> lid = new ArrayList<>();
         try (Connection con = ConnectionDB.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("select*from ood  where Order_Id=" + id + ";");
@@ -35,7 +35,7 @@ public class OrderDAL {
         return lid;
     }
 
-    public Order getOrder(ResultSet rs) throws SQLException {
+    public static Order getOrder(ResultSet rs) throws SQLException {
         Order order = new Order();
         order.setOrderId(rs.getInt("Order_Id"));
         order.setOrderStatus(rs.getString("Order_Status"));
@@ -49,7 +49,7 @@ public class OrderDAL {
     }
 
     
-    public void createOrder(List<Cafe> cflist, int Acc_Id) {
+    public boolean createOrder(List<Cafe> cflist, int Acc_Id) {
 
         String sqlCrateOrder = "{call insertOrder(?,?,?)};";
         try (Connection con = ConnectionDB.getConnection();) {
@@ -75,6 +75,7 @@ public class OrderDAL {
             System.out.println("Error!");
             System.out.println(e.toString());
         }
+        return false;
 
     }
 
