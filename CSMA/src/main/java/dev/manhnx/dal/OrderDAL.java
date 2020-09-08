@@ -38,10 +38,11 @@ public class OrderDAL {
     public static Order getOrder(ResultSet rs) throws SQLException {
         Order order = new Order();
         order.setOrderId(rs.getInt("Order_Id"));
+        order.setAccId(rs.getInt("Acc_Id"));
         order.setOrderStatus(rs.getString("Order_Status"));
-
+        order.setOrderDate(rs.getString("Order_Date"));
         // order.setAccId(rs.getInt("Acc_Id"));
-        order.setCafeId(rs.getInt("cafe_id"));
+        order.setCafeName(rs.getString("cafe_Name"));
         order.setAmount(rs.getInt("amount"));
         order.setPrice(rs.getDouble("price"));
         // order.setOrderDate(rs.getString("Order_Date"));

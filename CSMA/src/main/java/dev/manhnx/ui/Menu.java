@@ -35,7 +35,7 @@ public class Menu {
         System.out.println("|        Manage Order        |");
         System.out.println("|============================|");
         System.out.println("|1. View and Search Bill     |");
-        System.out.println("|2. Revenue                  |");
+        // System.out.println("|2. Revenue                  |");
         System.out.println("|0. Exit                     |");
         System.out.println("|============================|");
     }

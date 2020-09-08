@@ -16,7 +16,7 @@ import dev.manhnx.ui.CafeUIFunction;
 
 public class OrderBL {
 
-    static Scanner sc = new Scanner(System.in);
+    // static Scanner sc = new Scanner(System.in);
     private static OrderDAL orderDAL = new OrderDAL();
     public List<Order> getbyId(int id) {
         return OrderDAL.getId(id);

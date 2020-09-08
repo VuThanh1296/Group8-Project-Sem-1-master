@@ -159,8 +159,8 @@ public class OrderUIFuction {
     //     return order;
     // }
 
-    private static void showOrder(int order_id, int cafe_Id, int amount) {
-    }
+    // private static void showOrder(int order_id, int cafe_Id, int amount) {
+    // }
 
     public static String yesno(String content) {
         boolean isValidInput = true;
