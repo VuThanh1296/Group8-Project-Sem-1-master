@@ -146,7 +146,7 @@ public class AccountDAL {
                 return id = -1;
             } else {
 
-                rs = start.executeQuery("SELECT User_Password FROM coffeeshop.account where Acc_Id = '" + id + "';");
+                rs = start.executeQuery("SELECT User_Password FROM coffeeshop.accounts where Acc_Id = '" + id + "';");
                 while (rs.next()) {
                     if (password.equals(rs.getString("User_Password"))) {
                         return id;
