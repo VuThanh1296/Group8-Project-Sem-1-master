@@ -98,9 +98,8 @@ public class OrderUIFuction {
     }
     public static void showOrder(List<Cafe> cafes, int staffID) {
         String line = "----------------------------------------------------";
-        // Order order = orderDAL.getCurrentOrderID();
+        Order order = obl.getCurrentOrder();
         // System.out.println(line);
-        Order order = new Order();
         printCenter(line, "Order Detail");
         System.out.println(line);
         System.out.println("| Order ID : " + order.getOrderId());

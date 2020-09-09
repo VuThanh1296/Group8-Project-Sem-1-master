@@ -36,9 +36,9 @@ public class OrderDAL {
         order.setOrderStatus(rs.getString("Order_Status"));
         order.setOrderDate(rs.getString("Order_Date"));
         // order.setAccId(rs.getInt("Acc_Id"));
-        order.setCafeName(rs.getString("cafe_Name"));
-        order.setAmount(rs.getInt("amount"));
-        order.setPrice(rs.getDouble("price"));
+        // order.setCafeName(rs.getString("cafe_Name"));
+        // order.setAmount(rs.getInt("amount"));
+        // order.setPrice(rs.getDouble("price"));
         // order.setOrderDate(rs.getString("Order_Date"));
         return order;
     }
@@ -54,9 +54,9 @@ public class OrderDAL {
             String date = LocalDate.now().toString();
             cs.setString(3,date);
             cs.execute();
+            String sqlCrateOrderDetail = "{call insertOrderDetail(?,?,?,?)};";
             for (Cafe cafe : cflist) {
-                String sqlCrateOrderDetail = "{call insertOrderDetail(?,?,?,?)};";
-                cs = con.prepareCall(sqlCrateOrderDetail);
+                cs= con.prepareCall(sqlCrateOrderDetail);
                 Order order = getCurrentOrderID();
                 cs.setInt(1, order.getOrderId());
                 cs.setInt(2, cafe.getCafeId());

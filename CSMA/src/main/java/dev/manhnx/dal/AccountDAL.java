@@ -127,9 +127,8 @@ public class AccountDAL {
         String position = null;
         int id = -1;
         try {
-            String strconn = "jdbc:mysql://localhost:3306/coffeeshop?user=root&password=123456789";
-            Connection conn = DriverManager.getConnection(strconn);
-            // Connection conn = ConnectionDB.getConnection();
+            
+            Connection conn = ConnectionDB.getConnection();
             Statement start = conn.createStatement();
             ResultSet rs = start.executeQuery(
                     "SELECT Acc_Id,User_Name FROM coffeeshop.accounts where User_Name = '" + username + "';");

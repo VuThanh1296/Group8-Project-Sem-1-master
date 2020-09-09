@@ -49,7 +49,9 @@ Order_Date 	varchar(11)	NOT NULL,
 PRIMARY KEY (Order_Id),
 FOREIGN KEY (Acc_Id) REFERENCES Accounts(Acc_Id) ON DELETE CASCADE
 );
+INSERT INTO `coffeeshop`.`order_drinks` (`Order_Id`, `Acc_Id`, `Order_Status`, `Order_Date`) VALUES ('1', '2', '1', '2020-09-05');
 
+INSERT INTO `coffeeshop`.`order_drinks` (`Order_Id`, `Acc_Id`, `Order_Status`, `Order_Date`) VALUES ('2', '2', '1', '2020-09-05');
 
 
 CREATE TABLE OrderDetails(
@@ -61,7 +63,15 @@ constraint pk_OrderDetails PRIMARY KEY (Order_Id, Cafe_Id),
  FOREIGN KEY (Order_Id) REFERENCES Orders(Order_Id) ,
 FOREIGN KEY (Cafe_Id) REFERENCES Cafe(Cafe_Id) 
 );
+<<<<<<< HEAD
 INSERT INTO `coffeeshop`.`orders` ( `Acc_Id`, `Order_Status`, `Order_Date`) VALUES ( '2', '1', '21/06/1999');
+=======
+INSERT INTO `coffeeshop`.`order_details` (`Order_Id`, `Cafe_Id`, `Amount`, `Price`) VALUES ('1', '1', '1', '10000');
+INSERT INTO `coffeeshop`.`order_details` (`Order_Id`, `Cafe_Id`, `Amount`, `Price`) VALUES ('2', '2', '1', '10000');
+
+
+
+>>>>>>> 43060c73330130ebdf507930bf4b40efe1cd1853
 
 -- CREATE TABLE Size(
 -- Size_Id	INT AUTO_INCREMENT,
@@ -142,7 +152,11 @@ INSERT INTO `coffeeshop`.`orders` ( `Acc_Id`, `Order_Status`, `Order_Date`) VALU
 -- PRIMARY KEY(Material_Id)
 -- );
 -- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('1', 'cafe', '10', '2020-08-25', '1');
+<<<<<<< HEAD
 -- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('2', 'sua', '4', '2020-08-25', '1');
+=======
+-- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('2', 'sữa', '4', '2020-08-25', '1');
+>>>>>>> 43060c73330130ebdf507930bf4b40efe1cd1853
 -- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('3', 'đường', '10', '2020-08-25', '1');
 -- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('4', 'bơ', '10', '2020-08-25', '1');
 -- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('5', 'dưa hấu', '10', '2020-08-25', '1');
@@ -176,6 +190,7 @@ BEGIN
 END $$
 DELIMITER ;
 call insertOrder(2,2,'2020-09-05');
+<<<<<<< HEAD
 Select *  from coffeeshop.orders order by order_id desc limit 1;
 -- end insertOrder
 DELIMITER $$
@@ -183,10 +198,20 @@ CREATE PROCEDURE insertOrderDetail(in order_id int , in cafe_id int , in amount 
 BEGIN 
 	insert into orderdetails values(order_id,cafe_id,amount,price);
 END $$
+=======
+Select *  from coffeeshop.order_drinks order by order_id desc limit 1;
+
+DELIMITER $$
+CREATE PROCEDURE insertOrderDetail(in order_id int , in cafe_id int , in amount int , in price double)
+BEGIN 
+	insert into order_details values(order_id,cafe_id,amount,price);
+END $$   
+>>>>>>> 43060c73330130ebdf507930bf4b40efe1cd1853
 DELIMITER ;
--- end insertOrderDetail
 
-
-
-
-
+create view ood as
+select o_d.Order_Id, a.acc_id, o_d.order_status, o_d.order_date, c.cafe_name, o_de.amount, o_de.price 
+from accounts as a inner join order_drinks as o_d on a.acc_id = o_d.acc_id
+inner join order_details as o_de on o_d.order_id = o_de.order_id
+inner join cafe as c on o_de.cafe_id = c.cafe_id
+-- where o_d.order_id = 1
