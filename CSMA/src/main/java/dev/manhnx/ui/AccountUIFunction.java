@@ -93,11 +93,12 @@ public class AccountUIFunction {
     public static void update() {
         // AccountBL abl = new AccountBL();
         Scanner sc = new Scanner(System.in);
-        if (abl.updateAccount(inputInfo())) {
+        try {
+            abl.updateAccount(inputInfo());
             System.out.println("update complete");
 
-        } else {
-            System.out.println("error");
+        } catch(Exception e) {
+            System.out.println("error" +e);
         }
 
         sc.nextLine();
@@ -111,7 +112,7 @@ public class AccountUIFunction {
         account.setPassword(sc.nextLine());
         System.out.print("Acc_Id: ");
         account.setAccId(sc.nextInt());
-        sc.close();
+        // sc.close();
         return account;
     }
 }

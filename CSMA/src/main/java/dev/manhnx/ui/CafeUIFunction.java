@@ -59,17 +59,22 @@ public class CafeUIFunction {
         cafe.setCafeAmount(Integer.parseInt(sc.nextLine()));
         return cafe;
     }
+
     public static void updateCafe() {
         // AccountBL abl = new AccountBL();
         Scanner sc = new Scanner(System.in);
-        if (cbl.updateCafe(inputInfo())) {
+        try  {
+            cbl.updateCafe(inputInfo());
             System.out.println("update complete");
 
-        } else {
-            System.out.println("error");
         }
+        catch(Exception e) {
+            System.out.println("error"+e);
+        }
+            
+        
 
-        sc.nextLine();
+        // sc.nextLine();
 
     }
 
@@ -78,19 +83,20 @@ public class CafeUIFunction {
         Scanner sc = new Scanner(System.in);
         System.out.print("Cafe_Id: ");
         cafe.setCafeId(Integer.parseInt(sc.nextLine()));
-        System.out.print("New Cafe_Id: ");
-        cafe.setCafeId(Integer.parseInt(sc.nextLine()));
+        // System.out.print("New Cafe_Id: ");
+        // cafe.setCafeId(Integer.parseInt(sc.nextLine()));
         System.out.print("New Cafe_Name: ");
         cafe.setCafeName(sc.nextLine());
         System.out.print("New Cafe_Price: ");
         cafe.setCafePrice(Double.parseDouble(sc.nextLine()));
-        System.out.print("New Cafe_Available: ");
+        System.out.print("New Cafe_Amount: ");
         cafe.setCafeAmount(Integer.parseInt(sc.nextLine()));
         System.out.print("New Cafe_Status: ");
         cafe.setCafeStatus(Integer.parseInt(sc.nextLine()));
-        sc.close();
+        // sc.close();
         return cafe;
     }
+
     public static void showCafeById() {
 
         CafeBL cbl = new CafeBL();
@@ -113,15 +119,15 @@ public class CafeUIFunction {
                         cafe.getCafePrice(), cafe.getCafeAmount(), cafe.getCafeStatus());
                 System.out.println("|==============================================================================|");
 
-
             }
-            System.out.println("nhap Enter de tiep tuc");
-            sc.nextLine();
+            // System.out.println("nhap Enter de tiep tuc");
+            // sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" + e);
         }
 
     }
+
     public static void showCafeByName() {
 
         CafeBL cfbl = new CafeBL();
@@ -129,7 +135,7 @@ public class CafeUIFunction {
         System.out.print("Enter Name: ");
         String name = sc.nextLine();
         List<Cafe> lis = cbl.getbyName(name);
-        
+
         try {
 
             System.out.println("|==============================================================================|");
@@ -144,11 +150,10 @@ public class CafeUIFunction {
                 System.out.printf("| %-7s | %-20s | %-10s | %-15s | %-12s | \n", cafe.getCafeId(), cafe.getCafeName(),
                         cafe.getCafePrice(), cafe.getCafeAmount(), cafe.getCafeStatus());
                 System.out.println("|==============================================================================|");
-                
 
             }
-            System.out.println("nhấn phím bất kỳ để quay lại!");
-            sc.nextLine();
+            // System.out.println("nhấn phím bất kỳ để quay lại!");
+            // sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" + e);
         }

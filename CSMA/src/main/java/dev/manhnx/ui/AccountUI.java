@@ -49,6 +49,8 @@ public class AccountUI {
                                     break;
                                 case "2":
                                     AccountUIFunction.update();
+                                    System.out.println("Press enter to back!");
+                                    sc.nextLine();
                                     break;
                                 case "3":
                                     AccountUIFunction.showAllAccount();
@@ -80,6 +82,8 @@ public class AccountUI {
                                     break;
                                 case "2":
                                     CafeUIFunction.updateCafe();
+                                    System.out.println("Press enter to back!");
+                                    sc.nextLine();
                                     break;
                                 case "3":
                                     CafeUIFunction.showAllCafe();
@@ -87,13 +91,15 @@ public class AccountUI {
                                     sc.nextLine();
                                     break;
                                 case "4":
-                                    CafeUIFunction.showCafeById();
+                                    CafeUIFunction.showCafeByName();
+                                    System.out.println("Press enter to back!");
+                                    sc.nextLine();
                                     break;
 
                                 case "0":
                                     System.exit(0);
                             }
-                            System.out.println("nhấn phím bất kỳ để quay lại");
+                            // System.out.println("nhấn phím bất kỳ để quay lại");
                         }
 
                     }
