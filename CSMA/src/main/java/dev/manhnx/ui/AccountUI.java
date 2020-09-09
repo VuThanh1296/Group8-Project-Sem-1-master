@@ -1,14 +1,14 @@
 package dev.manhnx.ui;
 
 import java.io.IOException;
-import java.util.List;
+// import java.util.List;
 import java.util.Scanner;
-import dev.manhnx.ui.*;
-import dev.manhnx.bl.AccountBL;
-import dev.manhnx.bl.CafeBL;
-import dev.manhnx.bl.OrderBL;
-import dev.manhnx.dal.AccountDAL;
-import dev.manhnx.persistance.Cafe;
+// import dev.manhnx.ui.*;
+// import dev.manhnx.bl.AccountBL;
+// import dev.manhnx.bl.CafeBL;
+// import dev.manhnx.bl.OrderBL;
+// import dev.manhnx.dal.AccountDAL;
+// import dev.manhnx.persistance.Cafe;
 
 public class AccountUI {
     static Scanner sc = new Scanner(System.in);
@@ -24,9 +24,9 @@ public class AccountUI {
             System.out.println("=============================");
             System.out.println("|1.Manager Staff            |");
             System.out.println("|2.Manager Cafe             |");
-            System.out.println("|3.Manager Order            |");
-            System.out.println("|4.Logout                   |");
-            System.out.println("|5.Exit                     |");
+            // System.out.println("|3.Manager Order            |");
+            System.out.println("|3.Logout                   |");
+            System.out.println("|4.Exit                     |");
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
             String chose = sc.nextLine();
@@ -105,35 +105,35 @@ public class AccountUI {
                     }
 
                     break;
+                // case "3":
+                //     cls();
+                //     while (true) {
+                //         Menu.MenuOrder();
+                //         System.out.print("Enter the selection: ");
+                //         chose = sc.nextLine();
+                //         if (chose.equals("0") == true) {
+                //             break;
+                //         } else {
+                //             switch (chose) {
+                //                 case "1":
+                //                     OrderUIFuction.showOrderById();
+                //                     break;
+                //                 case "2":
+
+                //                     break;
+                //                 case "0":
+                //                     System.exit(0);
+
+                //             }
+                //         }
+
+                //     }
+
+                //     break;
                 case "3":
-                    cls();
-                    while (true) {
-                        Menu.MenuOrder();
-                        System.out.print("Enter the selection: ");
-                        chose = sc.nextLine();
-                        if (chose.equals("0") == true) {
-                            break;
-                        } else {
-                            switch (chose) {
-                                case "1":
-                                    OrderUIFuction.showOrderById();
-                                    break;
-                                case "2":
-
-                                    break;
-                                case "0":
-                                    System.exit(0);
-
-                            }
-                        }
-
-                    }
-
-                    break;
-                case "5":
                     back = false;
                     break;
-                case "0":
+                case "4":
                     System.exit(0);
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");

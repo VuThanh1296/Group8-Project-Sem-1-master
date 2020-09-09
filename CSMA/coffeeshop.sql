@@ -49,7 +49,9 @@ Order_Date 	varchar(11)	NOT NULL,
 PRIMARY KEY (Order_Id),
 FOREIGN KEY (Acc_Id) REFERENCES Accounts(Acc_Id) ON DELETE CASCADE
 );
+INSERT INTO `coffeeshop`.`order_drinks` (`Order_Id`, `Acc_Id`, `Order_Status`, `Order_Date`) VALUES ('1', '2', '1', '2020-09-05');
 
+INSERT INTO `coffeeshop`.`order_drinks` (`Order_Id`, `Acc_Id`, `Order_Status`, `Order_Date`) VALUES ('2', '2', '1', '2020-09-05');
 
 
 CREATE TABLE Order_Details(
@@ -61,112 +63,116 @@ constraint pk_Order_Details PRIMARY KEY (Order_Id, Cafe_Id),
  FOREIGN KEY (Order_Id) REFERENCES Order_Drinks(Order_Id) ,
 FOREIGN KEY (Cafe_Id) REFERENCES Cafe(Cafe_Id) 
 );
-INSERT INTO `coffeeshop`.`order_drinks` ( `Acc_Id`, `Order_Status`, `Order_Date`) VALUES ( '2', '1', '21/06/1999');
-
-CREATE TABLE Size(
-Size_Id	INT AUTO_INCREMENT,
-Size_Type	VARCHAR(40)	NOT NULL,
-PRIMARY KEY (Size_Id)
-);
-INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('1', 'M');
-INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('2', 'L');
-INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('3', 'Ly');
-INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('4', 'Lon');
-INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('5 ', 'chai');
+INSERT INTO `coffeeshop`.`order_details` (`Order_Id`, `Cafe_Id`, `Amount`, `Price`) VALUES ('1', '1', '1', '10000');
+INSERT INTO `coffeeshop`.`order_details` (`Order_Id`, `Cafe_Id`, `Amount`, `Price`) VALUES ('2', '2', '1', '10000');
 
 
-CREATE TABLE Cafe_Size(
-Cafe_Id	INT NOT NULL,
-Size_Id	INT NOT NULL,
-PRIMARY KEY(cafe_Id, Size_Id),
-FOREIGN KEY(Cafe_Id) REFERENCES Cafe(Cafe_Id) ON DELETE CASCADE,
-FOREIGN KEY(Size_Id) REFERENCES Size(Size_Id) ON DELETE CASCADE
-);
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('1', '1');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('1', '2');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('2', '1');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('2', '2');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('3', '1');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('3', '2');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('4', '3');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('5', '3');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('6', '4');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('7', '4');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('8', '4');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('9', '5');
-INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('10', '3');
 
 
-CREATE TABLE Image(
-Image_Id	INT AUTO_INCREMENT,
-Image_Url	VARCHAR(1000) NOT NULL,
-PRIMARY KEY(Image_Id)
-);
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('1', 'https://www.google.com.vn/search?tbm=isch&q=cafe%20%C4%91%C3%A1#imgrc=iQKgA9udBrP1LM');
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('2', 'https://www.google.com.vn/search?q=cafe+s%E1%BB%AFa&tbm=isch&ved=2ahUKEwigwtSzwbXrAhUYEKYKHeZaCT8Q2-cCegQIABAA&oq=cafe+s%E1%BB%AFa&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgAEEM6BAgjECc6BQgAELEDOgcIABCxAxBDOgYIABAFEB46BggAEAgQHjoGCAAQChAYOgQIABAYUInYAliB5gJghOgCaARwAHgAgAFviAHDBpIBAzYuM5gBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=opJEX6DpEpigmAXmtaX4Aw#imgrc=VCOJSF3-AJSBAM');
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('3', 'https://www.google.com.vn/search?q=cafe+s%E1%BB%AFa&tbm=isch&ved=2ahUKEwigwtSzwbXrAhUYEKYKHeZaCT8Q2-cCegQIABAA&oq=cafe+s%E1%BB%AFa&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgAEEM6BAgjECc6BQgAELEDOgcIABCxAxBDOgYIABAFEB46BggAEAgQHjoGCAAQChAYOgQIABAYUInYAliB5gJghOgCaARwAHgAgAFviAHDBpIBAzYuM5gBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=opJEX6DpEpigmAXmtaX4Aw#imgrc=HOhrJZ3o4AILJM');
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('4', 'https://www.google.com.vn/search?q=sinh+t%E1%BB%91+b%C6%A1&tbm=isch&ved=2ahUKEwiP9aPKwbXrAhVH4pQKHQCUDh8Q2-cCegQIABAA&oq=sinh+t%E1%BB%91+&gs_lcp=CgNpbWcQARgAMgQIABBDMgQIABBDMgQIABBDMgQIABBDMgQIABBDMgQIABBDMgQIABBDMgIIADICCAAyAggAOgQIIxAnOgUIABCxAzoICAAQsQMQgwFQlqQCWOutAmCdtgJoAnAAeAKAAdgBiAGwDZIBBTAuOC4ymAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=0ZJEX8_ILcfE0wSAqLr4AQ#imgrc=STQQ4tDENqK-sM');
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('5', 'https://www.google.com.vn/search?q=sinh+t%E1%BB%91+d%C6%B0a+h%E1%BA%A5u&tbm=isch&ved=2ahUKEwiG_-7dwbXrAhWOAKYKHaClCpkQ2-cCegQIABAA&oq=sinh+t%E1%BB%91+d%C6%B0&gs_lcp=CgNpbWcQARgAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADoECCMQJzoECAAQGFDBcVjQfWCihAFoAnAAeACAAXCIAbAEkgEDNC4ymAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=-pJEX4aaMo6BmAWgy6rICQ#imgrc=ceWKgNRjXH1yeM');
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('6', 'https://www.google.com.vn/search?q=coca+cola&tbm=isch&ved=2ahUKEwjP_8LmwbXrAhUAxIsBHZxBByQQ2-cCegQIABAA&oq=coca&gs_lcp=CgNpbWcQARgBMgcIABCxAxBDMgUIABCxAzIFCAAQsQMyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAOgQIIxAnOgQIABBDUNaCAViahgFgwJQBaABwAHgAgAGOAYgBwQOSAQMxLjOYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=DJNEX8_JO4CIr7wPnIOdoAI#imgrc=MeAgw3LuRGgmpM');
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('7', 'https://www.google.com.vn/search?q=red+bull&tbm=isch&ved=2ahUKEwiIyo_wwbXrAhWVyIsBHY2kAYUQ2-cCegQIABAA&oq=red&gs_lcp=CgNpbWcQARgAMgcIABCxAxBDMgUIABCxAzIFCAAQsQMyBwgAELEDEEMyBQgAELEDMgUIABCxAzIFCAAQsQMyBAgAEEMyBQgAELEDMgUIABCxAzoECCMQJzoCCABQh2hYhGpgnHFoAHAAeACAAYUBiAHRApIBAzAuM5gBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=IZNEX8i1BpWRr7wPjcmGqAg#imgrc=MxTHzktvpOIaVM');
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('8', 'https://www.google.com.vn/search?q=sting&tbm=isch&ved=2ahUKEwjxjMv3wbXrAhVH95QKHdpfAdsQ2-cCegQIABAA&oq=sting&gs_lcp=CgNpbWcQAzIFCAAQsQMyBAgAEEMyBAgAEEMyBAgAEEMyBQgAELEDMgIIADICCAAyAggAMgIIADICCAA6BAgjECc6BwgAELEDEENQtGRY1mpgiGxoAHAAeACAAb8BiAHZBJIBAzEuNJgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=MJNEX_G0Lsfu0wTav4XYDQ#imgrc=nbkLhw7cJ1y-vM');
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('9', 'https://www.google.com.vn/search?q=lavie&tbm=isch&ved=2ahUKEwiuotX-wbXrAhUrJaYKHbT4CqMQ2-cCegQIABAA&oq=lavie&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgjECc6BQgAELEDOgQIABBDUMOWAli-pAJgxq0CaABwAHgAgAFoiAHTA5IBAzQuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=P5NEX-6GJavKmAW08auYCg#imgrc=wrK1eCxPma_DKM');
-INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('10', 'https://www.google.com.vn/search?q=cam+%C3%A9p&tbm=isch&ved=2ahUKEwi-hcKRwrXrAhVEAaYKHer_AU8Q2-cCegQIABAA&oq=cam+%C3%A9p&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgjECc6BAgAEEM6CAgAELEDEIMBOgUIABCxAzoGCAAQBRAeUMxdWL1lYLdoaAJwAHgAgAGFAYgB7QaSAQMxLjeYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=Z5NEX_61CMSCmAXq_4f4BA#imgrc=TLrRApil9njyZM');
+-- CREATE TABLE Size(
+-- Size_Id	INT AUTO_INCREMENT,
+-- Size_Type	VARCHAR(40)	NOT NULL,
+-- PRIMARY KEY (Size_Id)
+-- );
+-- INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('1', 'M');
+-- INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('2', 'L');
+-- INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('3', 'Ly');
+-- INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('4', 'Lon');
+-- INSERT INTO `coffeeshop`.`size` (`Size_Id`, `Size_Type`) VALUES ('5 ', 'chai');
 
 
-CREATE TABLE Cafe_Image(
-Cafe_Id	INT NOT NULL,
-Image_Id INT NOT NULL,
-PRIMARY KEY(Cafe_Id, Image_Id),
-FOREIGN KEY(Cafe_Id) REFERENCES Cafe(Cafe_Id) ON DELETE CASCADE,
-FOREIGN KEY(Image_Id) REFERENCES Image(Image_Id)	ON DELETE CASCADE
-);
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('1', '1');
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('2', '2');
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('3', '3');
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('4', '4');
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('5', '5');
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('6', '6');
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('7', '7');
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('8', '8');
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('9', '9');
-INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('10', '10');
+-- CREATE TABLE Cafe_Size(
+-- Cafe_Id	INT NOT NULL,
+-- Size_Id	INT NOT NULL,
+-- PRIMARY KEY(cafe_Id, Size_Id),
+-- FOREIGN KEY(Cafe_Id) REFERENCES Cafe(Cafe_Id) ON DELETE CASCADE,
+-- FOREIGN KEY(Size_Id) REFERENCES Size(Size_Id) ON DELETE CASCADE
+-- );
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('1', '1');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('1', '2');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('2', '1');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('2', '2');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('3', '1');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('3', '2');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('4', '3');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('5', '3');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('6', '4');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('7', '4');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('8', '4');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('9', '5');
+-- INSERT INTO `coffeeshop`.`cafe_size` (`Cafe_Id`, `Size_Id`) VALUES ('10', '3');
 
 
-CREATE TABLE Material(
-Material_Id	INT AUTO_INCREMENT,
-Material_Name	NVARCHAR(255)	NOT NULL,
-Amount	INT NOT NULL,
-Date_Added DATETIME NOT NULL,
-Material_Status	INT NOT NULL,
-PRIMARY KEY(Material_Id)
-);
-INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('1', 'cafe', '10', '2020-08-25', '1');
-INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('2', 'sữa', '4', '2020-08-25', '1');
-INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('3', 'đường', '10', '2020-08-25', '1');
-INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('4', 'bơ', '10', '2020-08-25', '1');
-INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('5', 'dưa hấu', '10', '2020-08-25', '1');
-INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('6', 'cam vàng', '10', '2020-08-25', '1');
+-- CREATE TABLE Image(
+-- Image_Id	INT AUTO_INCREMENT,
+-- Image_Url	VARCHAR(1000) NOT NULL,
+-- PRIMARY KEY(Image_Id)
+-- );
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('1', 'https://www.google.com.vn/search?tbm=isch&q=cafe%20%C4%91%C3%A1#imgrc=iQKgA9udBrP1LM');
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('2', 'https://www.google.com.vn/search?q=cafe+s%E1%BB%AFa&tbm=isch&ved=2ahUKEwigwtSzwbXrAhUYEKYKHeZaCT8Q2-cCegQIABAA&oq=cafe+s%E1%BB%AFa&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgAEEM6BAgjECc6BQgAELEDOgcIABCxAxBDOgYIABAFEB46BggAEAgQHjoGCAAQChAYOgQIABAYUInYAliB5gJghOgCaARwAHgAgAFviAHDBpIBAzYuM5gBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=opJEX6DpEpigmAXmtaX4Aw#imgrc=VCOJSF3-AJSBAM');
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('3', 'https://www.google.com.vn/search?q=cafe+s%E1%BB%AFa&tbm=isch&ved=2ahUKEwigwtSzwbXrAhUYEKYKHeZaCT8Q2-cCegQIABAA&oq=cafe+s%E1%BB%AFa&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgAEEM6BAgjECc6BQgAELEDOgcIABCxAxBDOgYIABAFEB46BggAEAgQHjoGCAAQChAYOgQIABAYUInYAliB5gJghOgCaARwAHgAgAFviAHDBpIBAzYuM5gBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=opJEX6DpEpigmAXmtaX4Aw#imgrc=HOhrJZ3o4AILJM');
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('4', 'https://www.google.com.vn/search?q=sinh+t%E1%BB%91+b%C6%A1&tbm=isch&ved=2ahUKEwiP9aPKwbXrAhVH4pQKHQCUDh8Q2-cCegQIABAA&oq=sinh+t%E1%BB%91+&gs_lcp=CgNpbWcQARgAMgQIABBDMgQIABBDMgQIABBDMgQIABBDMgQIABBDMgQIABBDMgQIABBDMgIIADICCAAyAggAOgQIIxAnOgUIABCxAzoICAAQsQMQgwFQlqQCWOutAmCdtgJoAnAAeAKAAdgBiAGwDZIBBTAuOC4ymAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=0ZJEX8_ILcfE0wSAqLr4AQ#imgrc=STQQ4tDENqK-sM');
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('5', 'https://www.google.com.vn/search?q=sinh+t%E1%BB%91+d%C6%B0a+h%E1%BA%A5u&tbm=isch&ved=2ahUKEwiG_-7dwbXrAhWOAKYKHaClCpkQ2-cCegQIABAA&oq=sinh+t%E1%BB%91+d%C6%B0&gs_lcp=CgNpbWcQARgAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADoECCMQJzoECAAQGFDBcVjQfWCihAFoAnAAeACAAXCIAbAEkgEDNC4ymAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=-pJEX4aaMo6BmAWgy6rICQ#imgrc=ceWKgNRjXH1yeM');
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('6', 'https://www.google.com.vn/search?q=coca+cola&tbm=isch&ved=2ahUKEwjP_8LmwbXrAhUAxIsBHZxBByQQ2-cCegQIABAA&oq=coca&gs_lcp=CgNpbWcQARgBMgcIABCxAxBDMgUIABCxAzIFCAAQsQMyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAOgQIIxAnOgQIABBDUNaCAViahgFgwJQBaABwAHgAgAGOAYgBwQOSAQMxLjOYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=DJNEX8_JO4CIr7wPnIOdoAI#imgrc=MeAgw3LuRGgmpM');
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('7', 'https://www.google.com.vn/search?q=red+bull&tbm=isch&ved=2ahUKEwiIyo_wwbXrAhWVyIsBHY2kAYUQ2-cCegQIABAA&oq=red&gs_lcp=CgNpbWcQARgAMgcIABCxAxBDMgUIABCxAzIFCAAQsQMyBwgAELEDEEMyBQgAELEDMgUIABCxAzIFCAAQsQMyBAgAEEMyBQgAELEDMgUIABCxAzoECCMQJzoCCABQh2hYhGpgnHFoAHAAeACAAYUBiAHRApIBAzAuM5gBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=IZNEX8i1BpWRr7wPjcmGqAg#imgrc=MxTHzktvpOIaVM');
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('8', 'https://www.google.com.vn/search?q=sting&tbm=isch&ved=2ahUKEwjxjMv3wbXrAhVH95QKHdpfAdsQ2-cCegQIABAA&oq=sting&gs_lcp=CgNpbWcQAzIFCAAQsQMyBAgAEEMyBAgAEEMyBAgAEEMyBQgAELEDMgIIADICCAAyAggAMgIIADICCAA6BAgjECc6BwgAELEDEENQtGRY1mpgiGxoAHAAeACAAb8BiAHZBJIBAzEuNJgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=MJNEX_G0Lsfu0wTav4XYDQ#imgrc=nbkLhw7cJ1y-vM');
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('9', 'https://www.google.com.vn/search?q=lavie&tbm=isch&ved=2ahUKEwiuotX-wbXrAhUrJaYKHbT4CqMQ2-cCegQIABAA&oq=lavie&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgjECc6BQgAELEDOgQIABBDUMOWAli-pAJgxq0CaABwAHgAgAFoiAHTA5IBAzQuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=P5NEX-6GJavKmAW08auYCg#imgrc=wrK1eCxPma_DKM');
+-- INSERT INTO `coffeeshop`.`image` (`Image_Id`, `Image_Url`) VALUES ('10', 'https://www.google.com.vn/search?q=cam+%C3%A9p&tbm=isch&ved=2ahUKEwi-hcKRwrXrAhVEAaYKHer_AU8Q2-cCegQIABAA&oq=cam+%C3%A9p&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgjECc6BAgAEEM6CAgAELEDEIMBOgUIABCxAzoGCAAQBRAeUMxdWL1lYLdoaAJwAHgAgAGFAYgB7QaSAQMxLjeYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=Z5NEX_61CMSCmAXq_4f4BA#imgrc=TLrRApil9njyZM');
 
 
-CREATE TABLE Recipe(
-Cafe_Id	INT NOT NULL,
-Material_Id	INT NOT NULL,
-Content	FLOAT,
-PRIMARY KEY(Cafe_Id, Material_Id),
-FOREIGN KEY(Cafe_Id) REFERENCES Cafe(Cafe_Id) ON DELETE CASCADE,
-FOREIGN KEY(Material_Id) REFERENCES Material(Material_Id) ON DELETE CASCADE
-);
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('1', '1', '0.03');
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('1', '3', '0.02');
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('2', '1', '0.03');
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('2', '2', '0.02');
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('3', '1', '0.03');
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('4', '4', '10');
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('4', '2', '0.03');
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('5', '5', '10');
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('5', '2', '0.03');
-INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('10', '6', '20');
+-- CREATE TABLE Cafe_Image(
+-- Cafe_Id	INT NOT NULL,
+-- Image_Id INT NOT NULL,
+-- PRIMARY KEY(Cafe_Id, Image_Id),
+-- FOREIGN KEY(Cafe_Id) REFERENCES Cafe(Cafe_Id) ON DELETE CASCADE,
+-- FOREIGN KEY(Image_Id) REFERENCES Image(Image_Id)	ON DELETE CASCADE
+-- );
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('1', '1');
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('2', '2');
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('3', '3');
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('4', '4');
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('5', '5');
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('6', '6');
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('7', '7');
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('8', '8');
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('9', '9');
+-- INSERT INTO `coffeeshop`.`cafe_image` (`Cafe_Id`, `Image_Id`) VALUES ('10', '10');
+
+
+-- CREATE TABLE Material(
+-- Material_Id	INT AUTO_INCREMENT,
+-- Material_Name	NVARCHAR(255)	NOT NULL,
+-- Amount	INT NOT NULL,
+-- Date_Added DATETIME NOT NULL,
+-- Material_Status	INT NOT NULL,
+-- PRIMARY KEY(Material_Id)
+-- );
+-- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('1', 'cafe', '10', '2020-08-25', '1');
+-- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('2', 'sữa', '4', '2020-08-25', '1');
+-- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('3', 'đường', '10', '2020-08-25', '1');
+-- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('4', 'bơ', '10', '2020-08-25', '1');
+-- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('5', 'dưa hấu', '10', '2020-08-25', '1');
+-- INSERT INTO `coffeeshop`.`material` (`Material_Id`, `Material_Name`, `Amount`, `Date_Added`, `Material_Status`) VALUES ('6', 'cam vàng', '10', '2020-08-25', '1');
+
+
+-- CREATE TABLE Recipe(
+-- Cafe_Id	INT NOT NULL,
+-- Material_Id	INT NOT NULL,
+-- Content	FLOAT,
+-- PRIMARY KEY(Cafe_Id, Material_Id),
+-- FOREIGN KEY(Cafe_Id) REFERENCES Cafe(Cafe_Id) ON DELETE CASCADE,
+-- FOREIGN KEY(Material_Id) REFERENCES Material(Material_Id) ON DELETE CASCADE
+-- );
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('1', '1', '0.03');
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('1', '3', '0.02');
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('2', '1', '0.03');
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('2', '2', '0.02');
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('3', '1', '0.03');
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('4', '4', '10');
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('4', '2', '0.03');
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('5', '5', '10');
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('5', '2', '0.03');
+-- INSERT INTO `coffeeshop`.`recipe` (`Cafe_Id`, `Material_Id`, `Content`) VALUES ('10', '6', '20');
 
 -- PROCEDURE 
 DELIMITER $$
@@ -177,16 +183,17 @@ END $$
 DELIMITER ;
 call insertOrder(2,2,'2020-09-05');
 Select *  from coffeeshop.order_drinks order by order_id desc limit 1;
--- end insertOrder
+
 DELIMITER $$
 CREATE PROCEDURE insertOrderDetail(in order_id int , in cafe_id int , in amount int , in price double)
 BEGIN 
 	insert into order_details values(order_id,cafe_id,amount,price);
-END $$
+END $$   
 DELIMITER ;
--- end insertOrderDetail
 
-
-
-
-
+create view ood as
+select o_d.Order_Id, a.acc_id, o_d.order_status, o_d.order_date, c.cafe_name, o_de.amount, o_de.price 
+from accounts as a inner join order_drinks as o_d on a.acc_id = o_d.acc_id
+inner join order_details as o_de on o_d.order_id = o_de.order_id
+inner join cafe as c on o_de.cafe_id = c.cafe_id
+-- where o_d.order_id = 1

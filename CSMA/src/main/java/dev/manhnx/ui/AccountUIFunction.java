@@ -101,7 +101,7 @@ public class AccountUIFunction {
             System.out.println("error" +e);
         }
 
-        sc.nextLine();
+        // sc.nextLine();
 
     }
 
