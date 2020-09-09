@@ -18,11 +18,12 @@ public class OrderBL {
     static Scanner sc = new Scanner(System.in);
     private static OrderDAL orderDAL = new OrderDAL();
 
-    public static void showCafeById() {
+    public static void showOrderById() {
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Order_Id: ");
         int id = Integer.parseInt(sc.nextLine());
+        
         List<Order> lst = orderDAL.getId(id);
         try {
 

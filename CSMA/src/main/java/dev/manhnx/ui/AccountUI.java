@@ -38,6 +38,8 @@ public class AccountUI {
                             switch (chose) {
                                 case "1":
                                     AccountBL.insertAcc();
+                                    System.out.println("Insert Complete!!!");
+                                    sc.nextLine();
                                     break;
                                 case "2":
                                     AccountBL.update();
@@ -64,6 +66,7 @@ public class AccountUI {
                             switch (chose) {
                                 case "1":
                                     CafeBL.insertCafe();
+                                    System.out.println("Insert Complete!!!");
                                     break;
                                 case "2":
                                     CafeBL.updateCafe();
@@ -96,7 +99,7 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    OrderBL.showCafeById();
+                                    OrderBL.showOrderById();
                                     break;
                                 case "2":
 

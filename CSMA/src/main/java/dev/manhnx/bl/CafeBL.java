@@ -74,10 +74,10 @@ public class CafeBL {
         cafe.setCafeId(sc.nextInt());
         System.out.print("New Cafe_Id: ");
         cafe.setCafeId(sc.nextInt());
-        System.out.print("New Cafe_Name: ");
+        System.out.println("New Cafe_Name: ");
         cafe.setCafeName(sc.nextLine());
         System.out.print("New Cafe_Price: ");
-        cafe.setCafeAmount(sc.nextInt());
+        cafe.setCafePrice(sc.nextInt());
         System.out.print("New Cafe_Available: ");
         cafe.setCafeAmount(sc.nextInt());
         System.out.print("New Cafe_Status: ");
