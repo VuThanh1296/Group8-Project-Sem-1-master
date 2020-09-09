@@ -75,9 +75,9 @@ public class CafeBL {
         System.out.print("New Cafe_Id: ");
         cafe.setCafeId(sc.nextInt());
         System.out.println("New Cafe_Name: ");
-        cafe.setCafeName(sc.nextLine());
+        cafe.setCafeName(InputString());
         System.out.print("New Cafe_Price: ");
-        cafe.setCafePrice(sc.nextInt());
+        cafe.setCafePrice(sc.nextDouble());
         System.out.print("New Cafe_Available: ");
         cafe.setCafeAmount(sc.nextInt());
         System.out.print("New Cafe_Status: ");
