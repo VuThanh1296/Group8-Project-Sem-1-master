@@ -1,9 +1,5 @@
 package dev.manhnx.persistance;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Order {
     public static final int CREATE_NEW_ORDER_STATUS = 1;
     private int OrderId;

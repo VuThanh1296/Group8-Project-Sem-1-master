@@ -157,7 +157,7 @@ public class AccountDAL {
             }
 
         } catch (SQLException e) {
-            System.out.println("Look out for drunk!");
+            System.out.println("An error occurred!");
             System.out.println(e);
         }
         return id;

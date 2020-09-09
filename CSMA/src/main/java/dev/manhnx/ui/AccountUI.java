@@ -1,10 +1,14 @@
 package dev.manhnx.ui;
 
 import java.io.IOException;
+// import java.util.List;
 import java.util.Scanner;
-import dev.manhnx.bl.AccountBL;
-import dev.manhnx.bl.CafeBL;
-import dev.manhnx.bl.OrderBL;
+// import dev.manhnx.ui.*;
+// import dev.manhnx.bl.AccountBL;
+// import dev.manhnx.bl.CafeBL;
+// import dev.manhnx.bl.OrderBL;
+// import dev.manhnx.dal.AccountDAL;
+// import dev.manhnx.persistance.Cafe;
 
 public class AccountUI {
     static Scanner sc = new Scanner(System.in);
@@ -20,8 +24,9 @@ public class AccountUI {
             System.out.println("=============================");
             System.out.println("|1.Manager Staff            |");
             System.out.println("|2.Manager Cafe             |");
-            System.out.println("|3.Manager Order            |");
-            System.out.println("|0.Logout                   |");
+            // System.out.println("|3.Manager Order            |");
+            System.out.println("|3.Logout                   |");
+            System.out.println("|4.Exit                     |");
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
             String chose = sc.nextLine();
@@ -37,16 +42,19 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    AccountBL.insertAcc();
-                                    System.out.println("Insert Complete!!!");
+                                    AccountUIFunction.insertAcc();
+                                    System.out.println("Press enter to back!");
                                     sc.nextLine();
+
                                     break;
                                 case "2":
-                                    AccountBL.update();
+                                    AccountUIFunction.update();
+                                    System.out.println("Press enter to back!");
+                                    sc.nextLine();
                                     break;
                                 case "3":
-                                    AccountBL.showAllAccount();
-                                    System.out.println("Press any key to go back!");
+                                    AccountUIFunction.showAllAccount();
+                                    System.out.println("Press enter to back!");
                                     sc.nextLine();
                                     break;
                                 case "0":
@@ -55,6 +63,7 @@ public class AccountUI {
                         }
 
                     }
+                    break;
                 case "2":
                     cls();
                     while (true) {
@@ -67,67 +76,68 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    CafeBL.insertCafe();
-                                    System.out.println("Insert Complete!!!");
+                                    CafeUIFunction.insertCafe();
+                                    System.out.println("Press enter to continue!");
+                                    sc.nextLine();
                                     break;
                                 case "2":
-                                    CafeBL.updateCafe();
-                                    System.out.println("Press any key to go back!");
-                                sc.nextLine();
+                                    CafeUIFunction.updateCafe();
+                                    System.out.println("Press enter to back!");
+                                    sc.nextLine();
                                     break;
                                 case "3":
-                                CafeBL.showAllCafe();
-                                System.out.println("Press any key to go back!");
-                                sc.nextLine();
-                                break;
+                                    CafeUIFunction.showAllCafe();
+                                    System.out.println("Press enter to back!");
+                                    sc.nextLine();
+                                    break;
                                 case "4":
-                                    CafeBL.showCafeById();
-                                    System.out.println("Press any key to go back!");
+                                    CafeUIFunction.showCafeByName();
+                                    System.out.println("Press enter to back!");
                                     sc.nextLine();
                                     break;
 
                                 case "0":
                                     System.exit(0);
                             }
-                            // System.out.println("Press any key to go back!!");
+                            // System.out.println("nhấn phím bất kỳ để quay lại");
                         }
 
                     }
 
                     break;
+                // case "3":
+                //     cls();
+                //     while (true) {
+                //         Menu.MenuOrder();
+                //         System.out.print("Enter the selection: ");
+                //         chose = sc.nextLine();
+                //         if (chose.equals("0") == true) {
+                //             break;
+                //         } else {
+                //             switch (chose) {
+                //                 case "1":
+                //                     OrderUIFuction.showOrderById();
+                //                     break;
+                //                 case "2":
+
+                //                     break;
+                //                 case "0":
+                //                     System.exit(0);
+
+                //             }
+                //         }
+
+                //     }
+
+                //     break;
                 case "3":
-                    cls();
-                    while (true) {
-                        Menu.MenuOrder();
-                        System.out.print("Enter the selection: ");
-                        chose = sc.nextLine();
-                        if (chose.equals("0") == true) {
-                            break;
-                        } else {
-                            switch (chose) {
-                                case "1":
-                                    OrderBL.showOrderById();
-                                    System.out.println("Press any key to go back!");
-                                sc.nextLine();
-                                    break;
-                                case "2":
-
-                                    break;
-                                case "0":
-                                    System.exit(0);
-
-                            }
-                        }
-
-                    }
-
-                    break;
-                case "0":
                     back = false;
                     break;
+                case "4":
+                    System.exit(0);
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
-                    sc.nextLine();
+                    String nh = sc.nextLine();
             }
         }
     }
@@ -159,13 +169,13 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    CafeBL.showCafeByName();
-                                    System.out.println("Press any key to go back!");
+                                CafeUIFunction.showCafeByName();
+                                System.out.println("Press enter to back!");
                                 sc.nextLine();
-                                    break;
+                                break;
                                 case "2":
-                                    CafeBL.showAllCafe();
-                                    System.out.println("Press any key to go back!");
+                                    CafeUIFunction.showAllCafe();
+                                    System.out.println("Press enter to back!");
                                     sc.nextLine();
                                     break;
                                 case "0":
@@ -188,7 +198,7 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    OrderBL.createOrder(staffID);
+                                    OrderUIFuction.createOrder(staffID);
                                     System.out.println("Create Bill Comple!!!");
                                     sc.nextLine();
                                     break;
@@ -208,7 +218,7 @@ public class AccountUI {
                     break;
                 default:
                     System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
-                    sc.nextLine();
+                    final String nh = sc.nextLine();
             }
         }
     }
