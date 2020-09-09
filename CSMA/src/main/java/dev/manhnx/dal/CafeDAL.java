@@ -123,14 +123,16 @@ public class CafeDAL {
             String sql = "update Caffe set Cafe_Id = ?, Cafe_Name = ?, Cafe_Price = ?, cafe_amount = ?, Cafe_Status = ? where Cafe_Id = ?";
             Connection con = ConnectionDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setInt(6, cafe.getCafeId());
             pstm.setInt(1, cafe.getCafeId());
             pstm.setString(2, cafe.getCafeName());
             pstm.setDouble(3, cafe.getCafePrice());
             pstm.setInt(4, cafe.getCafeAmount());
             pstm.setInt(5, cafe.getCafeStatus());
+            pstm.setInt(6, cafe.getCafeId());
+
             pstm.executeUpdate();
         } catch (Exception e) {
+            System.out.println("Error"+e);
 
         }
         return false;
