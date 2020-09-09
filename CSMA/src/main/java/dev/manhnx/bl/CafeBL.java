@@ -1,17 +1,10 @@
 package dev.manhnx.bl;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
-import java.util.jar.Attributes.Name;
-
-import com.mysql.cj.jdbc.CallableStatement;
-
 import dev.manhnx.dal.CafeDAL;
-import dev.manhnx.dal.OrderDAL;
 import dev.manhnx.persistance.Cafe;
-import dev.manhnx.ui.AccountUI;
 
 public class CafeBL {
     private static CafeDAL cafeDAL = new CafeDAL();
@@ -110,7 +103,7 @@ public class CafeBL {
 
 
             }
-            System.out.println("nhap Enter de tiep tuc");
+            System.out.println("Press any key to go back!");
             sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" + e);
@@ -193,7 +186,7 @@ public class CafeBL {
                 
 
             }
-            System.out.println("nhấn phím bất kỳ để quay lại!");
+            System.out.println("Press any key to go back!");
             sc.nextLine();
         } catch (Exception e) {
             System.out.println("erroe" + e);

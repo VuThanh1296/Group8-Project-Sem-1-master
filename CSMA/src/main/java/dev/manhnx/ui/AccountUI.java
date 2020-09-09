@@ -46,6 +46,8 @@ public class AccountUI {
                                     break;
                                 case "3":
                                     AccountBL.showAllAccount();
+                                    System.out.println("Press any key to go back!");
+                                    sc.nextLine();
                                     break;
                                 case "0":
                                     System.exit(0);
@@ -70,19 +72,24 @@ public class AccountUI {
                                     break;
                                 case "2":
                                     CafeBL.updateCafe();
+                                    System.out.println("Press any key to go back!");
+                                sc.nextLine();
                                     break;
                                 case "3":
-                                    CafeBL.showAllCafe();
-                                    ;
-                                    break;
+                                CafeBL.showAllCafe();
+                                System.out.println("Press any key to go back!");
+                                sc.nextLine();
+                                break;
                                 case "4":
                                     CafeBL.showCafeById();
+                                    System.out.println("Press any key to go back!");
+                                    sc.nextLine();
                                     break;
 
                                 case "0":
                                     System.exit(0);
                             }
-                            System.out.println("nhấn phím bất kỳ để quay lại");
+                            // System.out.println("Press any key to go back!!");
                         }
 
                     }
@@ -100,6 +107,8 @@ public class AccountUI {
                             switch (chose) {
                                 case "1":
                                     OrderBL.showOrderById();
+                                    System.out.println("Press any key to go back!");
+                                sc.nextLine();
                                     break;
                                 case "2":
 
@@ -151,10 +160,12 @@ public class AccountUI {
                             switch (chose) {
                                 case "1":
                                     CafeBL.showCafeByName();
+                                    System.out.println("Press any key to go back!");
+                                sc.nextLine();
                                     break;
                                 case "2":
                                     CafeBL.showAllCafe();
-                                    System.out.println("nhấn phím bất kỳ để quay lại!");
+                                    System.out.println("Press any key to go back!");
                                     sc.nextLine();
                                     break;
                                 case "0":
