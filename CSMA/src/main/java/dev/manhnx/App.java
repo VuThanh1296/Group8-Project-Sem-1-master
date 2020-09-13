@@ -46,7 +46,7 @@ public class App {
         while (true) {
             ch = input.nextLine();
             if (ch.trim().compareTo("") == 0) {
-                System.out.print(" Nhap sai,moi nhap lai: ");
+                System.out.print(" Enter incorrectly, please re-enter: ");
 
             } else {
                 return ch.trim();

@@ -10,6 +10,8 @@ import java.util.Scanner;
 // import dev.manhnx.dal.AccountDAL;
 // import dev.manhnx.persistance.Cafe;
 
+import dev.manhnx.App;
+
 public class AccountUI {
     static Scanner sc = new Scanner(System.in);
 
@@ -42,20 +44,26 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
+                                    App.cls();
                                     AccountUIFunction.insertAcc();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+                                    App.cls();
 
                                     break;
                                 case "2":
+                                App.cls();
                                     AccountUIFunction.update();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+                                    App.cls();
                                     break;
                                 case "3":
+                                App.cls();
                                     AccountUIFunction.showAllAccount();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+                                    App.cls();
                                     break;
                                 case "0":
                                     System.exit(0);
@@ -76,24 +84,32 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
+                                App.cls();
                                     CafeUIFunction.insertCafe();
                                     System.out.println("Press enter to continue!");
                                     sc.nextLine();
+                                    App.cls();
                                     break;
                                 case "2":
+                                App.cls();
                                     CafeUIFunction.updateCafe();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+                                    App.cls();
                                     break;
                                 case "3":
+                                App.cls();
                                     CafeUIFunction.showAllCafe();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+                                    App.cls();
                                     break;
                                 case "4":
+                                App.cls();
                                     CafeUIFunction.showCafeByName();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+                                    App.cls();
                                     break;
 
                                 case "0":
@@ -136,7 +152,7 @@ public class AccountUI {
                 case "4":
                     System.exit(0);
                 default:
-                    System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
+                    System.out.printf("error Press %s :", "Enter to back");
                     String nh = sc.nextLine();
             }
         }
@@ -169,14 +185,18 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
+                                App.cls();
                                 CafeUIFunction.showCafeByName();
                                 System.out.println("Press enter to back!");
                                 sc.nextLine();
+                                App.cls();
                                 break;
                                 case "2":
+                                App.cls();
                                     CafeUIFunction.showAllCafe();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+                                    App.cls();
                                     break;
                                 case "0":
                                     System.exit(0);
@@ -198,11 +218,14 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
+                                App.cls();
                                     OrderUIFuction.createOrder(staffID);
                                     System.out.println("Create Bill Comple!!!");
                                     sc.nextLine();
+                                    App.cls();
                                     break;
                                 case "2":
+
 
                                     break;
                                 case "0":
@@ -217,8 +240,8 @@ public class AccountUI {
                     back = false;
                     break;
                 default:
-                    System.out.printf("Khong hop le,Nhan %s de quay lai:", "Enter");
-                    final String nh = sc.nextLine();
+                System.out.printf("error Press %s :", "Enter to back");
+                String nh = sc.nextLine();
             }
         }
     }
