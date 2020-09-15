@@ -88,6 +88,7 @@ public class OrderUIFuction {
             }
         }
         showOrder(cafesOrder, staffID);
+        showOrderStaff(cafesOrder, staffID);
     }
 
     private static Cafe getCafe(int cafeID) {
@@ -185,6 +186,24 @@ public class OrderUIFuction {
     System.out.println("|========================================================================|");
     System.out.println("|                     Thanks you, see you again                          |");
     System.out.println("|========================================================================|");
+}
+public static void showOrderStaff(List<Cafe> cafes, int staffID){
+    Order order = obl.getCurrentOrder();
+    System.out.println("\n");
+    System.out.println("|========================================================================|");
+    System.out.println("|                               Coffee Shop                              |");
+    System.out.println("|========================================================================|");
+    System.out.println("|                                Bill Pay                                |");
+    System.out.println("|========================================================================|");
+    System.out.printf("| Order Id: %-12s                Staff name: %-20s |\n", order.getOrderId(),getStaffName(staffID));
+    System.out.printf("| Date : %-12s                   Table : %-20s     |\n",order.getOrderDate(),order.getTable());
+    System.out.println("|========================================================================|");
+    System.out.printf("| %-34s | %-33s |\n",  "Cafe Name", "Amount");
+    System.out.println("|========================================================================|");
+    for (Cafe cafe : cafes) {
+        System.out.printf("| %-34s | %-33s |\n",  cafe.getCafeName(), cafe.getAmount());
+        System.out.println("|------------------------------------------------------------------------|");
+    }
 }
 
     public static String yesno(String content) {
