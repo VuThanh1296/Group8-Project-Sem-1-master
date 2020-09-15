@@ -1,6 +1,7 @@
 package dev.manhnx.ui;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import dev.manhnx.bl.CafeBL;
@@ -14,12 +15,48 @@ public class OrderUIFuction {
     static Scanner sc = new Scanner(System.in);
     static OrderBL obl = new OrderBL();
 
+    // public static void showOrderById() {
+
+    //     System.out.print("Enter Order_Id: ");
+
+    //     int id = Integer.parseInt(sc.nextLine());
+    //     List<Order> lst = obl.getbyId(id);
+    //     try {
+
+    //         System.out.println(
+    //                 "|===========================================================================================|");
+    //         System.out.println(
+    //                 "|                                   [CSMA] Group-08                                         |");
+    //         System.out.println(
+    //                 "|===========================================================================================|");
+    //         System.out.println(
+    //                 "|                                       Bill list                                           |");
+    //         System.out.println(
+    //                 "|===========================================================================================|");
+    //         System.out.printf("| %-8s | %-6s | %-12s | %-20s | %-9s | %-6s | %-10s | \n", "Order Id", "Acc Id",
+    //                 "Table", "Order Date", "Cafe Name", "Amount", "Price");
+    //         System.out.println(
+    //                 "|===========================================================================================|");
+    //         for (Order order : lst) {
+    //             System.out.printf("| %-8s | %-6s | %-12s | %-20s | %-9s | %-6s | %-10s | \n", order.getOrderId(),
+    //                     order.getAccId(), order.getTable(), order.getOrderDate(), order.getCafeName(),
+    //                     order.getAmount(), order.getPrice());
+    //             System.out.println(
+    //                     "|===========================================================================================|");
+
+    //         }
+    //         sc.nextLine();
+    //     } catch (Exception e) {
+    //         System.out.println("erroe" + e);
+    //     }
+
+    // }
     public static void showOrderById() {
 
-        System.out.print("Enter Order_Id: ");
-
-        int id = Integer.parseInt(sc.nextLine());
-        List<Order> lst = obl.getbyId(id);
+        System.out.print("Enter Date: ");
+        Scanner sc = new Scanner(System.in);
+        String date = sc.nextLine();
+        List<Order> lst = obl.getbyDate(date);
         try {
 
             System.out.println(
@@ -33,12 +70,12 @@ public class OrderUIFuction {
             System.out.println(
                     "|===========================================================================================|");
             System.out.printf("| %-8s | %-6s | %-12s | %-20s | %-9s | %-6s | %-10s | \n", "Order Id", "Acc Id",
-                    "Order Status", "Order Date", "Cafe Name", "Amount", "Price");
+                    "Table", "Order Date", "Cafe Name", "Amount", "Price");
             System.out.println(
                     "|===========================================================================================|");
             for (Order order : lst) {
                 System.out.printf("| %-8s | %-6s | %-12s | %-20s | %-9s | %-6s | %-10s | \n", order.getOrderId(),
-                        order.getAccId(), order.getOrderStatus(), order.getOrderDate(), order.getCafeName(),
+                        order.getAccId(), order.getTable(), order.getOrderDate(), order.getCafeName(),
                         order.getAmount(), order.getPrice());
                 System.out.println(
                         "|===========================================================================================|");
