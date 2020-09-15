@@ -187,7 +187,7 @@ public class AccountUI {
             System.out.println("|          Menu Staff       |");
             System.out.println("=============================");
             System.out.println("|1.View Menu                |");
-            System.out.println("|2.Manager Order            |");
+            System.out.println("|2.Create Order             |");
             System.out.println("|0.Logout                   |");
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
@@ -227,9 +227,19 @@ public class AccountUI {
                                 case "2":
                                     // App.cls();
                                     CafeUIFunction.showAllCafe();
+                                    while (true) {
+                                        String yn = yesno("Do you want to Create order?(y/n)?");
+                                        if (yn.equalsIgnoreCase("y")) {
+                                            OrderUIFuction.createOrder(staffID);
+                                            break;
+                                        } else {
+                                            cls();
+                                            break;
+                                        }
+
+                                    }
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
-                                    App.cls();
                                     break;
                                 case "0":
                                     System.exit(0);
