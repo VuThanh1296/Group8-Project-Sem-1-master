@@ -172,7 +172,7 @@ public class AccountUI {
 
                 default:
                     System.out.printf("error Press %s :", "Enter to back");
-                    String nh = sc.nextLine();
+                    sc.nextLine();
             }
         }
     }
@@ -183,13 +183,13 @@ public class AccountUI {
             cls();
             System.out.println("=============================");
             System.out.println("|           Group-8         |");
-            System.out.println("=============================");
+            System.out.println("|===========================|");
             System.out.println("|          Menu Staff       |");
-            System.out.println("=============================");
+            System.out.println("|===========================|");
             System.out.println("|1.View Menu                |");
             System.out.println("|2.Create Order             |");
             System.out.println("|0.Logout                   |");
-            System.out.println("=============================");
+            System.out.println("|===========================|");
             System.out.print("   --> Enter your choice: ");
             String chose = sc.nextLine();
             switch (chose) {
@@ -250,6 +250,7 @@ public class AccountUI {
                     break;
 
                 case "2":
+                cls();
                     while (true) {
                         // App.cls();
                         OrderUIFuction.createOrder(staffID);
@@ -259,14 +260,18 @@ public class AccountUI {
                             String yn = yesno("Do you want to Create order?(y/n)?");
                             if (yn.equalsIgnoreCase("y")) {
                                 OrderUIFuction.createOrder(staffID);
+                                
                                 break;
                             } else {
                                 cls();
                                 break;
+                                
                             }
                         }
+                        
                         break;
                     }
+                    cls();
                     break;
                     
                 case "0":
@@ -274,7 +279,7 @@ public class AccountUI {
                     break;
                 default:
                     System.out.printf("error Press %s :", "Enter to back");
-                    String nh = sc.nextLine();
+                    sc.nextLine();
             }
         }
     }

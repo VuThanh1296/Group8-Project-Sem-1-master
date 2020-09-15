@@ -14,7 +14,7 @@ import dev.manhnx.persistance.Order;
 public class OrderDAL {
     public static List<Order> getId(int id) {
         List<Order> lid = new ArrayList<>();
-        try (Connection con = ConnectionDB.getConnection()) {
+        try (Connection con = UtilDB.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("select*from ood  where Order_Id=" + id + ";");
             // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id
             // = ?;");
@@ -47,7 +47,7 @@ public class OrderDAL {
     public boolean createOrder(List<Cafe> cflist, int Acc_Id,int tableNumber) {
 
         String sqlCrateOrder = "{call insertOrder(?,?,?)};";
-        try (Connection con = ConnectionDB.getConnection();) {
+        try (Connection con = UtilDB.getConnection();) {
             CallableStatement cs = con.prepareCall(sqlCrateOrder);
             cs.setInt(1, Acc_Id);
             cs.setInt(2,tableNumber);
@@ -77,7 +77,7 @@ public class OrderDAL {
     public Order getCurrentOrderID() {
         Order order = new Order();
         String sql = "Select *  from coffeeshop.orders order by order_id desc limit 1;";
-        try (Connection con = ConnectionDB.getConnection();){
+        try (Connection con = UtilDB.getConnection();){
             CallableStatement csm = con.prepareCall(sql);
             ResultSet rs = csm.executeQuery();
             if (rs.next()) {

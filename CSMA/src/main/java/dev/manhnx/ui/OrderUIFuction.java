@@ -3,7 +3,6 @@ package dev.manhnx.ui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import dev.manhnx.bl.CafeBL;
 import dev.manhnx.bl.OrderBL;
 import dev.manhnx.dal.AccountDAL;
@@ -55,7 +54,6 @@ public class OrderUIFuction {
     public static void createOrder(int staffID) {
 
         // int Order_Id;
-        String order_Status;
         int Cafe_Id;
         int amount;
         int table;
@@ -71,16 +69,17 @@ public class OrderUIFuction {
             System.out.print("Enter cafe id : ");
             Cafe_Id = getIntegerNumber();
             cafe = getCafe(Cafe_Id);
-            System.out.println("Enter amount : ");
+            System.out.print("Enter amount : ");
             amount = getIntegerNumber();
             cafe.setAmount(amount);
-            System.out.println("Enter Table : ");
+            System.out.print("Enter Table : ");
             table = getIntegerNumber();
             cafe.setTable(table);
             // System.out.println("Note(status) : ");
             // order_Status = sc.nextLine();
             cafesOrder.add(cafe);
             new CafeDAL().updateAmount(amount, Cafe_Id);
+            
             String yn = yesno("Do you want to add cafe to order?(y/n)?");
             if (yn.equalsIgnoreCase("n")) {
                 OrderBL.createOrder(cafesOrder, staffID,table);
@@ -88,6 +87,7 @@ public class OrderUIFuction {
             }
         }
         showOrder(cafesOrder, staffID);
+        System.out.println("\n---------------------------------------------------------------------");
         showOrderStaff(cafesOrder, staffID);
     }
 
@@ -204,6 +204,9 @@ public static void showOrderStaff(List<Cafe> cafes, int staffID){
         System.out.printf("| %-34s | %-33s |\n",  cafe.getCafeName(), cafe.getAmount());
         System.out.println("|------------------------------------------------------------------------|");
     }
+    System.out.println("|========================================================================|");
+    System.out.println("|                     Thanks you, see you again                          |");
+    System.out.println("|========================================================================|");
 }
 
     public static String yesno(String content) {

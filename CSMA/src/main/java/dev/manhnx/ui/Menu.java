@@ -1,7 +1,5 @@
 package dev.manhnx.ui;
 
-// import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
-
 public class Menu {
     public static void MenuAcc(){
         System.out.println("|============================|");
@@ -40,15 +38,15 @@ public class Menu {
         System.out.println("|============================|");
     }
     public static void Product_Staff(){
-        System.out.println("=============================");
+        System.out.println("|===========================|");
         System.out.println("|           Group-8         |");
-        System.out.println("=============================");
-        System.out.println("|        Manager Product    |");
-        System.out.println("=============================");
+        System.out.println("|===========================|");
+        System.out.println("|        Order Staff        |");
+        System.out.println("|===========================|");
         System.out.println("|1.Search Drinks            |");
-        System.out.println("|2.Show Drinks             |");
+        System.out.println("|2.Show Drinks              |");
         System.out.println("|0.Exit                     |");
-        System.out.println("=============================");
+        System.out.println("|===========================|");
     }
     // public static void Order_Staff(){
     //     System.out.println("=============================");

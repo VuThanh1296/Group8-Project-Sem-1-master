@@ -18,7 +18,7 @@ public class CafeUIFunction {
             System.out.println("|===================================================================================|");
             System.out.println("|                                 [CSMA] Group-08                                   |");
             System.out.println("|===================================================================================|");
-            System.out.println("|                                     Cafe list                                     |");
+            System.out.println("|                                   Drinks list                                     |");
             System.out.println("|===================================================================================|");
             System.out.printf("| %-8s | %-21s | %-11s | %-16s | %-13s | \n", "Drink Id", "Drink Name", "Drink Price",
                     "Drink Amount", "Drink Status");
@@ -109,7 +109,7 @@ public class CafeUIFunction {
             System.out.println("|===================================================================================|");
             System.out.println("|                                 [CSMA] Group-08                                   |");
             System.out.println("|===================================================================================|");
-            System.out.println("|                                     Cafe list                                     |");
+            System.out.println("|                                   Drinks list                                     |");
             System.out.println("|===================================================================================|");
             System.out.printf("| %-8s | %-21s | %-11s | %-16s | %-13s | \n", "Drink Id", "Drink Name", "Drink Price",
                     "Drink Amount", "Drink Status");
@@ -141,7 +141,7 @@ public class CafeUIFunction {
             System.out.println("|===================================================================================|");
             System.out.println("|                                 [CSMA] Group-08                                   |");
             System.out.println("|===================================================================================|");
-            System.out.println("|                                     Cafe list                                     |");
+            System.out.println("|                                   Drinks list                                     |");
             System.out.println("|===================================================================================|");
             System.out.printf("| %-8s | %-21s | %-11s | %-16s | %-13s | \n", "Drink Id", "Drink Name", "Drink Price",
                     "Drink Amount", "Drink Status");

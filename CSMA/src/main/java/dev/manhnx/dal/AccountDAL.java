@@ -1,7 +1,6 @@
 package dev.manhnx.dal;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +17,7 @@ public class AccountDAL {
         String sql = "select*from Accounts";
         List<Account> lst = new ArrayList<Account>();
         try {
-            Connection con = ConnectionDB.getConnection();
+            Connection con = UtilDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
@@ -33,7 +32,7 @@ public class AccountDAL {
     public String getUserName(int accountID) {
         String userName = "";
         String sql = "Select full_name from accounts where acc_id = ?";
-        try (Connection con = ConnectionDB.getConnection(); CallableStatement csm = con.prepareCall(sql)) {
+        try (Connection con = UtilDB.getConnection(); CallableStatement csm = con.prepareCall(sql)) {
             csm.setInt(1, accountID);
             ResultSet rs = csm.executeQuery();
             if (rs.next()) {
@@ -65,7 +64,7 @@ public class AccountDAL {
     public boolean updateAcc(Account account) {
         try {
             String sql = "update Accounts set User_Password = ? where Acc_Id = ?";
-            Connection con = ConnectionDB.getConnection();
+            Connection con = UtilDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, account.getPassword());
             pstm.setInt(2, account.getAccId());
@@ -80,7 +79,7 @@ public class AccountDAL {
     public boolean insertAccount(Account account) {
         try {
             String sql = "INSERT INTO Accounts VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?)";
-            Connection con = ConnectionDB.getConnection();
+            Connection con = UtilDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, account.getAccId());
             pstm.setString(2, account.getFullName());
@@ -128,7 +127,7 @@ public class AccountDAL {
         int id = -1;
         try {
             
-            Connection conn = ConnectionDB.getConnection();
+            Connection conn = UtilDB.getConnection();
             Statement start = conn.createStatement();
             ResultSet rs = start.executeQuery(
                     "SELECT Acc_Id,User_Name FROM coffeeshop.accounts where User_Name = '" + username + "';");

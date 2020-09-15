@@ -14,7 +14,7 @@ public class CafeDAL {
     public static List<Cafe> getId(int id) {
         // Cafe cafe = new Cafe();
         List<Cafe> lid = new ArrayList<>();
-        try (Connection con = ConnectionDB.getConnection()) {
+        try (Connection con = UtilDB.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id=" + id + ";");
             // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id = ?;");
             // pstm.setInt(1, cafe.getCafeId());
@@ -30,7 +30,7 @@ public class CafeDAL {
     public static List<Cafe>  getName(String name) {
         // Cafe cafe = new Cafe();
         List<Cafe> lit = new ArrayList<>();
-        try (Connection con = ConnectionDB.getConnection()) {
+        try (Connection con = UtilDB.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("select*from Cafe where  Cafe.Cafe_Name like('%" + name + "%');");
             // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id = ?;");
             // pstm.setInt(1, cafe.getCafeId());
@@ -78,7 +78,7 @@ public class CafeDAL {
         String sql = "select*from Cafe";
         List<Cafe> lst = new ArrayList<>();
         try {
-            Connection con = ConnectionDB.getConnection();
+            Connection con = UtilDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
@@ -94,7 +94,7 @@ public class CafeDAL {
     public void updateAmount(int amount, int cafeID)
     {
         String sql = "UPDATE cafe as c set c.cafe_amount = c.cafe_amount - amount where c.cafe_id = ?;";
-        try(Connection con = ConnectionDB.getConnection();
+        try(Connection con = UtilDB.getConnection();
         CallableStatement csm = con.prepareCall(sql)) {
             csm.setInt(1, cafeID);
             csm.execute();
@@ -105,7 +105,7 @@ public class CafeDAL {
     public boolean insertCafe(Cafe cafe) {
         try {
             String sql = "INSERT INTO Cafe VALUES (?, ?, ?, ?, ?)";
-            Connection con = ConnectionDB.getConnection();
+            Connection con = UtilDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, cafe.getCafeId());
             pstm.setString(2, cafe.getCafeName());
@@ -121,7 +121,7 @@ public class CafeDAL {
     public boolean updateCafe(Cafe cafe) {
         try {
             String sql = "update Cafe set Cafe_Name = ?, Cafe_Price = ?, Cafe_Amount = ?, Cafe_Status = ? where Cafe_Id = ?";
-            Connection con = ConnectionDB.getConnection();
+            Connection con = UtilDB.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             // pstm.setInt(1, cafe.getCafeId());
             pstm.setString(1, cafe.getCafeName());
