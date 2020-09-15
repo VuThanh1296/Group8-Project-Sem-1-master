@@ -132,24 +132,24 @@ public class OrderDAL {
         }
         return order;
     }
-    public static void updateOrder(int order_id, int Cafe_Id, int Amount)
-    {
+    // public static void updateOrder(int order_id, int Cafe_Id, int Amount)
+    // {
         
-        String sql = "update OrderDetails set Cafe_Id =? ,Amount= ? where Order_ID =? ";
-        try (Connection con = ConnectionDB.getConnection();
-        CallableStatement cs = con.prepareCall(sql)){
-            cs.setInt(1, order_id);
-            cs.setInt(2, Cafe_Id);
-            cs.setInt(3, Amount);
-            cs.execute();
-            // ResultSet rs = csm.executeQuery();
+    //     String sql = "update OrderDetails set Cafe_Id =? ,Amount= ? where Order_ID =? ";
+    //     try (Connection con = ConnectionDB.getConnection();
+    //     CallableStatement cs = con.prepareCall(sql)){
+    //         cs.setInt(1, order_id);
+    //         cs.setInt(2, Cafe_Id);
+    //         cs.setInt(3, Amount);
+    //         cs.execute();
+    //         // ResultSet rs = csm.executeQuery();
 
-        } catch (Exception e) {
-            //TODO: handle exception
-            System.out.println("Error!");
-            System.out.println(e.toString());
-        }
-    }
+    //     } catch (Exception e) {
+    //         //TODO: handle exception
+    //         System.out.println("Error!");
+    //         System.out.println(e.toString());
+    //     }
+    // }
 
 //     public static void orderAmountByMonth(int year) {
 //         int count = 0;

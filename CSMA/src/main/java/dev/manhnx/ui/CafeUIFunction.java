@@ -38,7 +38,7 @@ public class CafeUIFunction {
 
     public static void insertCafe() {
         CafeBL cbl = new CafeBL();
-        System.out.println("Insert new Cafe:");
+        System.out.println("Insert new Drinks:");
         try {
             cbl.addCafe(inputCafe());
             System.out.println("Insert complete!");
@@ -49,13 +49,13 @@ public class CafeUIFunction {
 
     public static Cafe inputCafe() {
         Cafe cafe = new Cafe();
-        System.out.print("Cafe Id: ");
+        System.out.print("Drink Id: ");
         cafe.setCafeId(Integer.parseInt(sc.nextLine()));
-        System.out.print("Cafe Name: ");
+        System.out.print("Drink Name: ");
         cafe.setCafeName(sc.nextLine());
-        System.out.print("Cafe Price:");
+        System.out.print("Drink Price:");
         cafe.setCafePrice(Double.parseDouble(sc.nextLine()));
-        System.out.print("Available: : ");
+        System.out.print("Amount  : ");
         cafe.setCafeAmount(Integer.parseInt(sc.nextLine()));
         return cafe;
     }
@@ -81,17 +81,17 @@ public class CafeUIFunction {
     public static Cafe inputInfo() {
         Cafe cafe = new Cafe();
         Scanner sc = new Scanner(System.in);
-        System.out.print("Cafe_Id: ");
+        System.out.print("Drink_Id: ");
         cafe.setCafeId(Integer.parseInt(sc.nextLine()));
         // System.out.print("New Cafe_Id: ");
         // cafe.setCafeId(Integer.parseInt(sc.nextLine()));
-        System.out.print("New Cafe_Name: ");
+        System.out.print("New Drink_Name: ");
         cafe.setCafeName(sc.nextLine());
-        System.out.print("New Cafe_Price: ");
+        System.out.print("New Drink_Price: ");
         cafe.setCafePrice(Double.parseDouble(sc.nextLine()));
-        System.out.print("New Cafe_Amount: ");
+        System.out.print("New Drink_Amount: ");
         cafe.setCafeAmount(Integer.parseInt(sc.nextLine()));
-        System.out.print("New Cafe_Status: ");
+        System.out.print("New Drink_Status: ");
         cafe.setCafeStatus(Integer.parseInt(sc.nextLine()));
         // sc.close();
         return cafe;
