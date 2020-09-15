@@ -1,15 +1,7 @@
 package dev.manhnx.ui;
 
 import java.io.IOException;
-// import java.util.List;
 import java.util.Scanner;
-// import dev.manhnx.ui.*;
-// import dev.manhnx.bl.AccountBL;
-// import dev.manhnx.bl.CafeBL;
-// import dev.manhnx.bl.OrderBL;
-// import dev.manhnx.dal.AccountDAL;
-// import dev.manhnx.persistance.Cafe;
-
 import dev.manhnx.App;
 
 public class AccountUI {
@@ -25,10 +17,10 @@ public class AccountUI {
             System.out.println("|          Menu Admin       |");
             System.out.println("=============================");
             System.out.println("|1.Manager Staff            |");
-            System.out.println("|2.Manager Cafe             |");
-            // System.out.println("|3.Manager Order            |");
-            System.out.println("|3.Logout                   |");
-            System.out.println("|4.Exit                     |");
+            System.out.println("|2.Manager Drinks           |");
+            // System.out.println("|3.Manager Order |");
+            System.out.println("|0.Logout                   |");
+            // System.out.println("|4.Exit |");
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
             String chose = sc.nextLine();
@@ -44,7 +36,10 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                    App.cls();
+                                    // App.cls();
+                                    System.out.println("Table Account :");
+                                    AccountUIFunction.showAllAccount();
+                                    System.out.println("Insert Account :");
                                     AccountUIFunction.insertAcc();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
@@ -52,14 +47,20 @@ public class AccountUI {
 
                                     break;
                                 case "2":
-                                App.cls();
+                                    // App.cls();
+                                    System.out.println("\n");
+                                    AccountUIFunction.showAllAccount();
+                                    System.out.println("Update Account :");
                                     AccountUIFunction.update();
+                                    System.out.println("\n");
+                                    AccountUIFunction.showAllAccount();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+
                                     App.cls();
                                     break;
                                 case "3":
-                                App.cls();
+                                    App.cls();
                                     AccountUIFunction.showAllAccount();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
@@ -84,28 +85,37 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                App.cls();
+                                    // App.cls();
+                                    System.out.println("Table Drinks :");
+                                    CafeUIFunction.showAllCafe();
+                                    System.out.println("Insert Drinks :");
                                     CafeUIFunction.insertCafe();
+                                    System.out.println("\n");
+                                    CafeUIFunction.showAllCafe();
                                     System.out.println("Press enter to continue!");
                                     sc.nextLine();
                                     App.cls();
                                     break;
                                 case "2":
-                                App.cls();
+                                    // App.cls();
+                                    System.out.println("Table Drinks :");
+                                    CafeUIFunction.showAllCafe();
+                                    System.out.println("Update Drinks");
                                     CafeUIFunction.updateCafe();
+                                    System.out.println("Table Drinks :");
+                                    CafeUIFunction.showAllCafe();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
                                     App.cls();
                                     break;
                                 case "3":
-                                App.cls();
                                     CafeUIFunction.showAllCafe();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
                                     App.cls();
                                     break;
                                 case "4":
-                                App.cls();
+                                    App.cls();
                                     CafeUIFunction.showCafeByName();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
@@ -122,38 +132,37 @@ public class AccountUI {
 
                     break;
                 // case "3":
-                //     cls();
-                //     while (true) {
-                //         Menu.MenuOrder();
-                //         System.out.print("Enter the selection: ");
-                //         chose = sc.nextLine();
-                //         if (chose.equals("0") == true) {
-                //             break;
-                //         } else {
-                //             switch (chose) {
-                //                 case "1":
-                //                     OrderUIFuction.showOrderById();
-                //                     break;
-                //                 case "2":
+                // cls();
+                // while (true) {
+                // Menu.MenuOrder();
+                // System.out.print("Enter the selection: ");
+                // chose = sc.nextLine();
+                // if (chose.equals("0") == true) {
+                // break;
+                // } else {
+                // switch (chose) {
+                // case "1":
+                // OrderUIFuction.showOrderById();
+                // break;
+                // case "2":
 
-                //                     break;
-                //                 case "0":
-                //                     System.exit(0);
+                // break;
+                // case "0":
+                // System.exit(0);
 
-                //             }
-                //         }
+                // }
+                // }
 
-                //     }
+                // }
 
-                //     break;
-                case "3":
+                // break;
+                case "0":
                     back = false;
                     break;
-                case "4":
-                    System.exit(0);
+
                 default:
                     System.out.printf("error Press %s :", "Enter to back");
-                    String nh = sc.nextLine();
+                    sc.nextLine();
             }
         }
     }
@@ -168,7 +177,7 @@ public class AccountUI {
             System.out.println("|          Menu Staff       |");
             System.out.println("=============================");
             System.out.println("|1.View Menu                |");
-            System.out.println("|2.Manager Order            |");
+            System.out.println("|2.Create Orrder            |");
             System.out.println("|0.Logout                   |");
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
@@ -185,18 +194,27 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                App.cls();
-                                CafeUIFunction.showCafeByName();
-                                System.out.println("Press enter to back!");
-                                sc.nextLine();
-                                App.cls();
-                                break;
+                                  
+                                    CafeUIFunction.showCafeByName();
+                                    System.out.println("\n");
+                                    System.out.println("Do you want Create Order ?");
+                                    String yn = yesno("Do you want to add cafe to order?(y/n)?");
+                                    if (yn.equalsIgnoreCase("y")) {
+                                        OrderUIFuction.createOrder(staffID);
+                                    } else {
+                                        cls();
+                                        break;
+                                    }
+                                    // System.out.println("Press enter to back!");
+                                    // sc.nextLine();
+                                    // cls();
+                                    break;
                                 case "2":
-                                App.cls();
+                                    // App.cls();
                                     CafeUIFunction.showAllCafe();
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
-                                    App.cls();
+                                    cls();
                                     break;
                                 case "0":
                                     System.exit(0);
@@ -209,39 +227,34 @@ public class AccountUI {
                 case "2":
                     while (true) {
                         cls();
-                        Menu.Order_Staff();
-                        ;
-                        System.out.print("Enter the selection: ");
-                        chose = sc.nextLine();
-                        if (chose.equals("0") == true) {
-                            break;
-                        } else {
-                            switch (chose) {
-                                case "1":
-                                App.cls();
-                                    OrderUIFuction.createOrder(staffID);
-                                    System.out.println("Create Bill Comple!!!");
-                                    sc.nextLine();
-                                    App.cls();
-                                    break;
-                                case "2":
-
-
-                                    break;
-                                case "0":
-                                    System.exit(0);
-                                    break;
+                        OrderUIFuction.createOrder(staffID);
+                        System.out.println("Create Bill Comple!!!");
+                        sc.nextLine();
+                        System.out.println("Do you want to Create More Order ?");
+                        System.out.println("\n");
+                        while (true) {
+                            String yn = yesno("Do you want to add cafe to order?(y/n)?");
+                            if (yn.equalsIgnoreCase("y")) {
+                                OrderUIFuction.createOrder(staffID);
+                                System.out.println("Create Bill Comple!!!");
+                                sc.nextLine();
+                            } else {
+                                break;
                             }
+                          
                         }
-
+                        // sc.nextLine();
+                        cls();
+                        break;
                     }
+
                     break;
                 case "0":
                     back = false;
                     break;
                 default:
-                System.out.printf("error Press %s :", "Enter to back");
-                String nh = sc.nextLine();
+                    System.out.printf("error Press %s :", "Enter to back");
+                    sc.nextLine();
             }
         }
     }
@@ -254,5 +267,19 @@ public class AccountUI {
                 Runtime.getRuntime().exec("clear");
         } catch (IOException | InterruptedException ignored) {
         }
+    }
+
+    public static String yesno(String content) {
+        boolean isValidInput = true;
+        String yn = "";
+        while (isValidInput) {
+            System.out.print(content);
+            yn = sc.nextLine();
+            if (yn.equalsIgnoreCase("N") || yn.equalsIgnoreCase("Y")) {
+                break;
+            }
+            System.out.println("Input is wrong!");
+        }
+        return yn;
     }
 }

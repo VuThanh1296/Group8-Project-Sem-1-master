@@ -33,7 +33,7 @@ public class OrderDAL {
         Order order = new Order();
         order.setOrderId(rs.getInt("Order_Id"));
         order.setAccId(rs.getInt("Acc_Id"));
-        order.setOrderStatus(rs.getString("Order_Status"));
+        order.setTable(rs.getInt("Order_Table"));
         order.setOrderDate(rs.getString("Order_Date"));
         // order.setAccId(rs.getInt("Acc_Id"));
         // order.setCafeName(rs.getString("cafe_Name"));
@@ -44,13 +44,13 @@ public class OrderDAL {
     }
 
     
-    public boolean createOrder(List<Cafe> cflist, int Acc_Id) {
+    public boolean createOrder(List<Cafe> cflist, int Acc_Id,int tableNumber) {
 
         String sqlCrateOrder = "{call insertOrder(?,?,?)};";
         try (Connection con = ConnectionDB.getConnection();) {
             CallableStatement cs = con.prepareCall(sqlCrateOrder);
             cs.setInt(1, Acc_Id);
-            cs.setInt(2,2);
+            cs.setInt(2,tableNumber);
             String date = LocalDate.now().toString();
             cs.setString(3,date);
             cs.execute();
@@ -88,24 +88,24 @@ public class OrderDAL {
         }
         return order;
     }
-    public static void updateOrder(int order_id, int Cafe_Id, int Amount)
-    {
+    // public static void updateOrder(int order_id, int Cafe_Id, int Amount)
+    // {
         
-        String sql = "update OrderDetails set Cafe_Id =? ,Amount= ? where Order_ID =? ";
-        try (Connection con = ConnectionDB.getConnection();
-        CallableStatement cs = con.prepareCall(sql)){
-            cs.setInt(1, order_id);
-            cs.setInt(2, Cafe_Id);
-            cs.setInt(3, Amount);
-            cs.execute();
-            // ResultSet rs = csm.executeQuery();
+    //     String sql = "update OrderDetails set Cafe_Id =? ,Amount= ? where Order_ID =? ";
+    //     try (Connection con = ConnectionDB.getConnection();
+    //     CallableStatement cs = con.prepareCall(sql)){
+    //         cs.setInt(1, order_id);
+    //         cs.setInt(2, Cafe_Id);
+    //         cs.setInt(3, Amount);
+    //         cs.execute();
+    //         // ResultSet rs = csm.executeQuery();
 
-        } catch (Exception e) {
-            //TODO: handle exception
-            System.out.println("Error!");
-            System.out.println(e.toString());
-        }
-    }
+    //     } catch (Exception e) {
+    //         //TODO: handle exception
+    //         System.out.println("Error!");
+    //         System.out.println(e.toString());
+    //     }
+    // }
 
 //     public static void orderAmountByMonth(int year) {
 //         int count = 0;

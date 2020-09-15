@@ -8,6 +8,7 @@ public class Order {
     private String CafeName;
     private int Amount;
     private Double Price;
+    private int table;
     private String OrderStatus;
     private String OrderDate;
     // public Order(){
@@ -80,6 +81,13 @@ public class Order {
 
     public int setCafeId() {
         return CafeId;
+    }
+    public void setTable(int table) {
+        this.table = table;
+    }
+
+    public int getTable() {
+        return table;
     }
 
     // public List<Cafe> getCafe(){

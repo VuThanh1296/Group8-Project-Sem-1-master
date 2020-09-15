@@ -4,7 +4,7 @@ import java.util.List;
 import dev.manhnx.dal.OrderDAL;
 import dev.manhnx.persistance.Cafe;
 import dev.manhnx.persistance.Order;
-import dev.manhnx.ui.CafeUIFunction;
+
 
 
 public class OrderBL {
@@ -14,8 +14,8 @@ public class OrderBL {
     public List<Order> getbyId(int id) {
         return OrderDAL.getId(id);
     }
-    public static boolean createOrder(List<Cafe> cflist, int Acc_Id){
-        return orderDAL.createOrder(cflist, Acc_Id);
+    public static boolean createOrder(List<Cafe> cflist, int Acc_Id,int tableNumber){
+        return orderDAL.createOrder(cflist, Acc_Id,tableNumber);
     }
     public Order getCurrentOrder()
     {

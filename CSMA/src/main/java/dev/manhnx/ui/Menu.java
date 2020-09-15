@@ -21,10 +21,10 @@ public class Menu {
         System.out.println("|============================|");
         System.out.println("|        Manage Cafe         |");
         System.out.println("|============================|");
-        System.out.println("|1. Insert Cafe              |");
-        System.out.println("|2. Update Cafe              |");
-        System.out.println("|3. View Cafe                |");
-        System.out.println("|4. Search Cafe              |");
+        System.out.println("|1. Insert Drinks            |");
+        System.out.println("|2. Update Drinks            |");
+        System.out.println("|3. View Drinks              |");
+        System.out.println("|4. Search Drinks            |");
         System.out.println("|0. Exit                     |");
         System.out.println("|============================|");
     }
@@ -50,15 +50,15 @@ public class Menu {
         System.out.println("|0.Exit                     |");
         System.out.println("=============================");
     }
-    public static void Order_Staff(){
-        System.out.println("=============================");
-        System.out.println("|           Group-8         |");
-        System.out.println("=============================");
-        System.out.println("|       Manager Order       |");
-        System.out.println("=============================");
-        System.out.println("|1.Cearte Bill              |");
-        System.out.println("|2.Update Bill              |");
-        System.out.println("|0.Exit                     |");
-        System.out.println("=============================");
-    }
+    // public static void Order_Staff(){
+    //     System.out.println("=============================");
+    //     System.out.println("|           Group-8         |");
+    //     System.out.println("=============================");
+    //     System.out.println("|       Manager Order       |");
+    //     System.out.println("=============================");
+    //     System.out.println("|1.Cearte Bill              |");
+    //     System.out.println("|2.Update Bill              |");
+    //     System.out.println("|0.Exit                     |");
+    //     System.out.println("=============================");
+    // }
 }

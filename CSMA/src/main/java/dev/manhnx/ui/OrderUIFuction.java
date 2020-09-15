@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import dev.manhnx.App;
 import dev.manhnx.bl.CafeBL;
 import dev.manhnx.bl.OrderBL;
 import dev.manhnx.dal.AccountDAL;
@@ -51,19 +52,20 @@ public class OrderUIFuction {
         }
 
     }
+
     public static void createOrder(int staffID) {
 
         // int Order_Id;
-        String order_Status;
         int Cafe_Id;
         int amount;
+        int table;
         // System.out.println(" Enter Table(Order_id): ");
         // Order_Id = input_int();
-       
+
         boolean isContinueAddCafeToOrder = true;
-        List<Cafe> cafesOrder = new ArrayList<>(); 
+        List<Cafe> cafesOrder = new ArrayList<>();
         while (isContinueAddCafeToOrder) {
-            
+
             Cafe cafe = new Cafe();
             CafeUIFunction.showAllCafe();
             System.out.print("Enter cafe id : ");
@@ -72,55 +74,64 @@ public class OrderUIFuction {
             System.out.println("Enter amount : ");
             amount = getIntegerNumber();
             cafe.setAmount(amount);
-            System.out.println("Note(status) : ");
-            order_Status = sc.nextLine();
+            System.out.println("Enter Table : ");
+            table = getIntegerNumber();
+            cafe.setTable(table);
+            // System.out.println("Note(status) : ");
+            // order_Status = sc.nextLine();
             cafesOrder.add(cafe);
             new CafeDAL().updateAmount(amount, Cafe_Id);
             String yn = yesno("Do you want to add cafe to order?(y/n)?");
             if (yn.equalsIgnoreCase("n")) {
-                OrderBL.createOrder(cafesOrder, staffID);
+                OrderBL.createOrder(cafesOrder, staffID,table);
+                
                 break;
             }
         }
-        showOrder(cafesOrder,staffID);
+        showOrder(cafesOrder, staffID);
+        System.out.println("\n");
+        showOrderStaff(cafesOrder, staffID);
     }
-    private static Cafe getCafe(int cafeID)
-    {   List<Cafe> cafes = new CafeBL().getALLCafe();
+
+    private static Cafe getCafe(int cafeID) {
+        List<Cafe> cafes = new CafeBL().getALLCafe();
         Cafe cafeOut = new Cafe();
         for (Cafe cafe : cafes) {
-            if(cafe.getCafeId().equals(cafeID))
-            {
+            if (cafe.getCafeId().equals(cafeID)) {
                 cafeOut = cafe;
                 break;
             }
         }
         return cafeOut;
     }
-    public static void showOrder(List<Cafe> cafes, int staffID) {
+
+    public static void inputOrder(List<Cafe> cafes, int staffID) {
         String line = "----------------------------------------------------";
         Order order = obl.getCurrentOrder();
         // System.out.println(line);
         printCenter(line, "Order Detail");
-        System.out.println(line);
+        // System.out.println(line);
         System.out.println("| Order ID : " + order.getOrderId());
         System.out.println("| Staff name : " + getStaffName(staffID));
-        System.out.println("| Order Date : "+order.getOrderDate());
-        System.out.println(line);
-        double totalBill = 0;
+        System.out.println("| Order Date : " + order.getOrderDate());
+        System.out.println("| Order Table : " + order.getTable());
+        // System.out.println(line);
+        // double intomoney = 0;
         for (Cafe cafe : cafes) {
-        System.out.println("| Product Name : "+cafe.getCafeName());
-        System.out.println("| Product amount : "+cafe.getAmount());
-        System.out.println("| Product price : "+cafe.getCafePrice());
-        totalBill+= cafe.getAmount() * cafe.getCafePrice();
-    }
-        System.out.println("| Total bill : " + totalBill);
+            System.out.println("| Product Name : " + cafe.getCafeName());
+            System.out.println("| Product amount : " + cafe.getAmount());
+            System.out.println("| Product price : " + cafe.getCafePrice());
+            // intomoney += cafe.getAmount() * cafe.getCafePrice();
+        }
+        // System.out.println("| Total bill : " +intomoney);
         System.out.println(line);
         sc.nextLine();
     }
-    static String getStaffName(int staffID)
-    {
+
+    static String getStaffName(int staffID) {
         return new AccountDAL().getUserName(staffID);
     }
+
     static void printCenter(String line, String content) {
         int sizeOfLine = line.length();
         int midPositionOfLine = sizeOfLine / 2;
@@ -130,8 +141,6 @@ public class OrderUIFuction {
         String contentOut = "| %-" + startPrintPoint + "s %-" + restOfLine + "s |\n";
         System.out.printf(contentOut, startPrintPoint, "");
     }
-
-   
 
     static int getIntegerNumber() {
         int number = 0;
@@ -145,21 +154,60 @@ public class OrderUIFuction {
             }
         return number;
     }
-    // public static void updateOrder(int Order_id,int Cafe_Id,int Amount) {
-    //        Order order = new Order();
-    //        OrderBL.showOrder(Order_id,Cafe_Id,Amount);
-            
-    //     }
-    // }
-    // public static Order inputUpdateOrder() {
-    //     Order order = new Order();
-    //     Scanner sc = new Scanner(System.in)
-    //     System.out.println("");
-    //     return order;
-    // }
 
-    // private static void showOrder(int order_id, int cafe_Id, int amount) {
-    // }
+    public static void showOrder(List<Cafe> cafes, int staffID){
+        double intomoney  =0;
+       double totalbill = 0;
+        // String line = "----------------------------------------------------";
+        Order order = obl.getCurrentOrder();
+        // System.out.println(line);
+        // printCenter(line, "Order Detail");
+        System.out.println("\n");
+    System.out.println("|========================================================================|");
+    System.out.println("|                               Coffee Shop                              |");
+    System.out.println("|========================================================================|");
+    System.out.println("|                                Bill Pay                                |");
+    System.out.println("|========================================================================|");
+    System.out.printf("| Order Id: %-12s                Staff name: %-20s |\n", order.getOrderId(),getStaffName(staffID));
+    System.out.printf("| Date : %-12s                   Table : %-20s     |\n",order.getOrderDate(),order.getTable());
+    System.out.println("|========================================================================|");
+    System.out.printf("| %-15s | %-6s | %-20s | %-20s |\n",  
+             "Cafe Name", "Amount", "Price"," into money");
+    System.out.println("|========================================================================|");
+    for (Cafe cafe : cafes) {
+        // System.out.println("| intomoney : " + intomoney);
+      intomoney  = cafe.getAmount() * cafe.getCafePrice();
+      totalbill = totalbill + intomoney;
+        System.out.printf("| %-15s | %-6s | %-20s | %-20s |\n",  cafe.getCafeName(), cafe.getAmount(), cafe.getCafePrice()+"(VND)",intomoney+"(VND)");
+        System.out.println("|------------------------------------------------------------------------|");
+        // System.out.println("|=====================================================================|");
+        
+    }
+    // System.out.println("|========================================================================|");
+    System.out.printf("|ToTal Bill :                                        %-20s|\n",totalbill+"(VND)");
+    System.out.println("|========================================================================|");
+    System.out.println("|                     Thanks you, see you again                          |");
+    System.out.println("|========================================================================|");
+}
+public static void showOrderStaff(List<Cafe> cafes, int staffID){
+    Order order = obl.getCurrentOrder();
+    System.out.println("\n");
+    System.out.println("|========================================================================|");
+    System.out.println("|                               Coffee Shop                              |");
+    System.out.println("|========================================================================|");
+    System.out.println("|                                Order                                   |");
+    System.out.println("|========================================================================|");
+    System.out.printf("| Order Id: %-12s                Staff name: %-20s |\n", order.getOrderId(),getStaffName(staffID));
+    System.out.printf("| Date : %-12s                   Table : %-20s     |\n",order.getOrderDate(),order.getTable());
+    System.out.println("|========================================================================|");
+    System.out.printf("| %-34s | %-33s |\n",  
+             "Cafe Name", "Amount");
+    System.out.println("|========================================================================|");
+    for (Cafe cafe : cafes) {
+    System.out.printf("| %-34s | %-33s |\n",  cafe.getCafeName(), cafe.getAmount());
+    System.out.println("|------------------------------------------------------------------------|");
+    }
+}
 
     public static String yesno(String content) {
         boolean isValidInput = true;

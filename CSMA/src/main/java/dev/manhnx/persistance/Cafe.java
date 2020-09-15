@@ -7,6 +7,7 @@ public class Cafe {
     private double cafePrice;
     private int amount;
     private int cafeAmount;
+    private int table;
     public Cafe(){
 
     }
@@ -53,6 +54,13 @@ public class Cafe {
     }
     public int getCafeAmount(){
         return cafeAmount;
+    }
+    public void setTable(int table) {
+        this.table = table;
+    }
+
+    public int getTable() {
+        return table;
     }
     // @Override
     // public String toString() {
