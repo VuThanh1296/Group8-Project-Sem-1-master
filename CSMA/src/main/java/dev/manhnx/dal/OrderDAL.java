@@ -2,6 +2,7 @@ package dev.manhnx.dal;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,16 +13,32 @@ import dev.manhnx.persistance.Cafe;
 import dev.manhnx.persistance.Order;
 
 public class OrderDAL {
-    public static List<Order> getId(int id) {
+    // public static List<Order> getId(int id) {
+    //     List<Order> lid = new ArrayList<>();
+    //     try (Connection con = ConnectionDB.getConnection()) {
+    //         PreparedStatement pstm = con.prepareStatement("select*from ood  where Order_Id=" + id + ";");
+    //         // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id
+    //         // = ?;");
+    //         // pstm.setInt(1, cafe.getCafeId());
+    //         ResultSet rs = pstm.executeQuery();
+    //         if (rs.next()) {
+    //             lid.add(getOrderById(rs));
+    //         }
+    //     } catch (Exception e) {
+    //         System.out.println("error" + e);
+    //     }
+    //     return lid;
+    // }
+    public static List<Order> getDate(String date) {
         List<Order> lid = new ArrayList<>();
         try (Connection con = ConnectionDB.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("select*from ood  where Order_Id=" + id + ";");
+            PreparedStatement pstm = con.prepareStatement("select*from ood  where Order_Id=" + date + ";");
             // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id
             // = ?;");
             // pstm.setInt(1, cafe.getCafeId());
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
-                lid.add(getOrder(rs));
+                lid.add(getOrderByDate(rs));
             }
         } catch (Exception e) {
             System.out.println("error" + e);
@@ -29,11 +46,38 @@ public class OrderDAL {
         return lid;
     }
 
+    // public static Order getOrderById(ResultSet rs) throws SQLException {
+    //     Order order = new Order();
+    //     order.setOrderId(rs.getInt("Order_Id"));
+    //     order.setAccId(rs.getInt("Acc_Id"));
+    //     order.setTable(rs.getInt("Order_table"));
+    //     order.setOrderDate(rs.getString("Order_Date"));
+    //     // order.setAccId(rs.getInt("Acc_Id"));
+    //     order.setCafeName(rs.getString("cafe_Name"));
+    //     order.setAmount(rs.getInt("amount"));
+    //     order.setPrice(rs.getDouble("price"));
+    //     // order.setOrderDate(rs.getString("Order_Date"));
+    //     return order;
+    // }
+    public static Order getOrderByDate(ResultSet rs) throws SQLException {
+        Order order = new Order();
+        order.setOrderId(rs.getInt("Order_Id"));
+        order.setAccId(rs.getInt("Acc_Id"));
+        order.setTable(rs.getInt("Order_table"));
+        order.setOrderDate(rs.getString("Order_Date"));
+        // order.setAccId(rs.getInt("Acc_Id"));
+        order.setCafeName(rs.getString("cafe_Name"));
+        order.setAmount(rs.getInt("amount"));
+        order.setPrice(rs.getDouble("price"));
+        // order.setOrderDate(rs.getString("Order_Date"));
+        return order;
+    }
+
     public static Order getOrder(ResultSet rs) throws SQLException {
         Order order = new Order();
         order.setOrderId(rs.getInt("Order_Id"));
         order.setAccId(rs.getInt("Acc_Id"));
-        order.setTable(rs.getInt("Order_Table"));
+        order.setTable(rs.getInt("Order_table"));
         order.setOrderDate(rs.getString("Order_Date"));
         // order.setAccId(rs.getInt("Acc_Id"));
         // order.setCafeName(rs.getString("cafe_Name"));

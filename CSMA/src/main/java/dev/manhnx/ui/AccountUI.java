@@ -26,9 +26,9 @@ public class AccountUI {
             System.out.println("=============================");
             System.out.println("|1.Manager Staff            |");
             System.out.println("|2.Manager Cafe             |");
-            // System.out.println("|3.Manager Order            |");
-            System.out.println("|3.Logout                   |");
-            System.out.println("|4.Exit                     |");
+            System.out.println("|3.Manager Order            |");
+            System.out.println("|4.Logout                   |");
+            // System.out.println("|4.Exit                     |");
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
             String chose = sc.nextLine();
@@ -121,36 +121,38 @@ public class AccountUI {
                     }
 
                     break;
-                // case "3":
-                //     cls();
-                //     while (true) {
-                //         Menu.MenuOrder();
-                //         System.out.print("Enter the selection: ");
-                //         chose = sc.nextLine();
-                //         if (chose.equals("0") == true) {
-                //             break;
-                //         } else {
-                //             switch (chose) {
-                //                 case "1":
-                //                     OrderUIFuction.showOrderById();
-                //                     break;
-                //                 case "2":
-
-                //                     break;
-                //                 case "0":
-                //                     System.exit(0);
-
-                //             }
-                //         }
-
-                //     }
-
-                //     break;
                 case "3":
-                    back = false;
+                    cls();
+                    while (true) {
+                        Menu.MenuOrder();
+                        System.out.print("Enter the selection: ");
+                        chose = sc.nextLine();
+                        if (chose.equals("0") == true) {
+                            break;
+                        } else {
+                            switch (chose) {
+                                case "1":
+                                    OrderUIFuction.showOrderById();
+                                    System.out.println("Press enter to back!");
+                                    sc.nextLine();
+                                    break;
+                                case "2":
+
+                                    break;
+                                case "0":
+                                    System.exit(0);
+
+                            }
+                        }
+
+                    }
+
                     break;
                 case "4":
-                    System.exit(0);
+                    back = false;
+                    break;
+                // case "4":
+                //     System.exit(0);
                 default:
                     System.out.printf("error Press %s :", "Enter to back");
                     String nh = sc.nextLine();
@@ -218,7 +220,7 @@ public class AccountUI {
                         } else {
                             switch (chose) {
                                 case "1":
-                                App.cls();
+                                // App.cls();
                                     OrderUIFuction.createOrder(staffID);
                                     System.out.println("Create Bill Comple!!!");
                                     sc.nextLine();
