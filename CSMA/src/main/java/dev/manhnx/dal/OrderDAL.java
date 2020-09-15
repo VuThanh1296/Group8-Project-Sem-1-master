@@ -35,7 +35,7 @@ public class OrderDAL {
         try (Connection con = UtilDB.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("select*from ood  where Order_Id=" + id + ";");
 =======
-        try (Connection con = ConnectionDB.getConnection()) {
+        try (Connection con = UtilDB.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("select*from ood  where Order_Id=" + date + ";");
 >>>>>>> 8938b9c30c32136701de1c86c01658aeda49a195
             // PreparedStatement pstm = con.prepareStatement("select*from Cafe where Cafe_Id
