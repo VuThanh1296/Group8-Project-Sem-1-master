@@ -184,7 +184,13 @@ BEGIN
 END $$
 DELIMITER ;
 -- end insertOrderDetail
-
+create view ood
+as
+select o.order_id, a.acc_id, o.order_table, o.order_date, c.cafe_name, o_d.amount, o_d.price
+from accounts as a inner join orders as o on a.acc_id = o.acc_id
+inner join orderdetails as o_d on o.order_id = o_d.order_id
+inner join cafe as c on o_d.cafe_id = c.cafe_id
+-- where o.order_id = 1
 
 
 
