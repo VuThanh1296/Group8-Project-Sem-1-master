@@ -108,10 +108,14 @@ public class AccountUIFunction {
     public static Account inputInfo() {
         Account account = new Account();
         Scanner sc = new Scanner(System.in);
-        System.out.print("New_Password: ");
-        account.setPassword(sc.nextLine());
         System.out.print("Acc_Id: ");
-        account.setAccId(sc.nextInt());
+
+        account.setAccId(Integer.parseInt(sc.nextLine()));
+        System.out.print("New_Password: ");
+
+
+        account.setPassword(sc.nextLine());
+        
         // sc.close();
         return account;
     }

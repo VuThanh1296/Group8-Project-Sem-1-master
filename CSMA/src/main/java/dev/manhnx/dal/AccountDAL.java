@@ -69,6 +69,8 @@ public class AccountDAL {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, account.getPassword());
             pstm.setInt(2, account.getAccId());
+
+
             pstm.executeUpdate();
         } catch (Exception e) {
 

@@ -11,12 +11,12 @@ public class OrderBL {
 
     // static Scanner sc = new Scanner(System.in);
     private static OrderDAL orderDAL = new OrderDAL();
-    // public List<Order> getbyId(int id) {
-    //     return OrderDAL.getId(id);
-    // }
-    public List<Order> getbyDate(String date) {
-        return OrderDAL.getDate(date);
+    public List<Order> getbyId(int id) {
+        return OrderDAL.getId(id);
     }
+    // public List<Order> getbyDate(String date) {
+    //     return OrderDAL.getDate(date);
+    // }
     public static boolean createOrder(List<Cafe> cflist, int Acc_Id,int tableNumber){
         return orderDAL.createOrder(cflist, Acc_Id,tableNumber);
     }

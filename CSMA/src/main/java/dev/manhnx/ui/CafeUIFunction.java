@@ -53,10 +53,12 @@ public class CafeUIFunction {
         cafe.setCafeId(Integer.parseInt(sc.nextLine()));
         System.out.print("Drink Name: ");
         cafe.setCafeName(sc.nextLine());
-        System.out.print("Drink Price:");
+        System.out.print("Drink Price: ");
         cafe.setCafePrice(Double.parseDouble(sc.nextLine()));
-        System.out.print("Amount  : ");
+        System.out.print("Amount: ");
         cafe.setCafeAmount(Integer.parseInt(sc.nextLine()));
+        System.out.print("Status: ");
+        cafe.setCafeStatus(Integer.parseInt(sc.nextLine()));
         return cafe;
     }
 

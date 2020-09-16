@@ -26,15 +26,9 @@ public class AccountUI {
             System.out.println("=============================");
             System.out.println("|1.Manager Staff            |");
             System.out.println("|2.Manager Cafe             |");
-<<<<<<< HEAD
             System.out.println("|3.Manager Order            |");
             System.out.println("|4.Logout                   |");
             // System.out.println("|4.Exit                     |");
-=======
-            // System.out.println("|3.Manager Order |");
-            System.out.println("|0.Logout                   |");
-            // System.out.println("|4.Exit |");
->>>>>>> 6b893c46088b3ade363c09bd749fea6ad3bfb4d9
             System.out.println("=============================");
             System.out.print("   --> Enter your choice: ");
             String chose = sc.nextLine();
@@ -67,7 +61,7 @@ public class AccountUI {
                                     System.out.println("Table Account :");
                                     AccountUIFunction.showAllAccount();
                                     AccountUIFunction.update();
-                                    System.out.println("Update Complete!!!\n");
+                                    // System.out.println("Update Complete!!!\n");
                                     AccountUIFunction.showAllAccount();
                                     System.out.println("Press enter to back!");
 
@@ -105,7 +99,7 @@ public class AccountUI {
                                     CafeUIFunction.showAllCafe();
                                     System.out.println("----Insert Drinks----");
                                     CafeUIFunction.insertCafe();
-                                    System.out.println("Insert Complete!!!");
+                                    // System.out.println("Insert Complete!!!");
                                     CafeUIFunction.showAllCafe();
                                     System.out.println("Press enter to continue!");
                                     sc.nextLine();
@@ -116,7 +110,7 @@ public class AccountUI {
                                     CafeUIFunction.showAllCafe();
                                     System.out.println("----Update Drinks----");
                                     CafeUIFunction.updateCafe();
-                                    System.out.println("Update Complete!!!");
+                                    // System.out.println("Update Complete!!!");
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
                                     App.cls();
@@ -147,7 +141,6 @@ public class AccountUI {
                     }
 
                     break;
-<<<<<<< HEAD
                 case "3":
                     cls();
                     while (true) {
@@ -180,37 +173,6 @@ public class AccountUI {
                     break;
                 // case "4":
                 //     System.exit(0);
-=======
-                // case "3":
-                // cls();
-                // while (true) {
-                // Menu.MenuOrder();
-                // System.out.print("Enter the selection: ");
-                // chose = sc.nextLine();
-                // if (chose.equals("0") == true) {
-                // break;
-                // } else {
-                // switch (chose) {
-                // case "1":
-                // OrderUIFuction.showOrderById();
-                // break;
-                // case "2":
-
-                // break;
-                // case "0":
-                // System.exit(0);
-
-                // }
-                // }
-
-                // }
-
-                // break;
-                case "0":
-                    back = false;
-                    break;
-
->>>>>>> 6b893c46088b3ade363c09bd749fea6ad3bfb4d9
                 default:
                     System.out.printf("error Press %s :", "Enter to back");
                     String nh = sc.nextLine();
@@ -256,14 +218,16 @@ public class AccountUI {
                                             OrderUIFuction.createOrder(staffID);
                                             break;
                                         } else {
-                                            cls();
+                                            
                                             break;
                                         }
 
                                     }
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+                                    cls();
                                     break;
+                                    
 
                                 case "2":
                                     // App.cls();
@@ -281,6 +245,7 @@ public class AccountUI {
                                     }
                                     System.out.println("Press enter to back!");
                                     sc.nextLine();
+                                    cls();
                                     break;
                                 case "0":
                                     System.exit(0);
@@ -292,7 +257,6 @@ public class AccountUI {
 
                 case "2":
                     while (true) {
-<<<<<<< HEAD
                         cls();
                         Menu.Order_Staff();
                         ;
@@ -316,20 +280,6 @@ public class AccountUI {
                                 case "0":
                                     System.exit(0);
                                     break;
-=======
-                        // App.cls();
-                        OrderUIFuction.createOrder(staffID);
-                        System.out.println("Create Bill Comple!!!");
-                        sc.nextLine();
-                        while (true) {
-                            String yn = yesno("Do you want to Create order?(y/n)?");
-                            if (yn.equalsIgnoreCase("y")) {
-                                OrderUIFuction.createOrder(staffID);
-                                break;
-                            } else {
-                                cls();
-                                break;
->>>>>>> 6b893c46088b3ade363c09bd749fea6ad3bfb4d9
                             }
                         }
                         break;

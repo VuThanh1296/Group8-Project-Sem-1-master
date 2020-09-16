@@ -46,19 +46,19 @@ public class Menu {
         System.out.println("|        Manager Product    |");
         System.out.println("=============================");
         System.out.println("|1.Search Drinks            |");
-        System.out.println("|2.Show Drinks             |");
+        System.out.println("|2.Show Drinks              |");
         System.out.println("|0.Exit                     |");
         System.out.println("=============================");
     }
-    // public static void Order_Staff(){
-    //     System.out.println("=============================");
-    //     System.out.println("|           Group-8         |");
-    //     System.out.println("=============================");
-    //     System.out.println("|       Manager Order       |");
-    //     System.out.println("=============================");
-    //     System.out.println("|1.Cearte Bill              |");
-    //     System.out.println("|2.Update Bill              |");
-    //     System.out.println("|0.Exit                     |");
-    //     System.out.println("=============================");
-    // }
+    public static void Order_Staff(){
+        System.out.println("=============================");
+        System.out.println("|           Group-8         |");
+        System.out.println("=============================");
+        System.out.println("|       Manager Order       |");
+        System.out.println("=============================");
+        System.out.println("|1.Cearte Bill              |");
+        // System.out.println("|2.Update Bill              |");
+        System.out.println("|0.Exit                     |");
+        System.out.println("=============================");
+    }
 }
