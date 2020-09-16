@@ -28,7 +28,8 @@ public class App {
                 if (check == -1) {
                                     System.out.println("Account or password is not correct!");
                                     System.out.printf("Accept %s to continue:", "Enter");
-                                    String nh = sc.nextLine();                
+                                    
+                                    sc.nextLine();                
                 } else if (check == 1) {
                                     accountui.Menu_Admin(check);
                  } else {
@@ -46,12 +47,13 @@ public class App {
         while (true) {
             ch = input.nextLine();
             if (ch.trim().compareTo("") == 0) {
-                System.out.print(" Enter incorrectly, please re-enter: ");
-
+                System.out.print(" Enter incorrectly, please re-enter: \n ");
+                
             } else {
                 return ch.trim();
             }
         }
+
 
     }
 
@@ -64,7 +66,26 @@ public class App {
         } catch (IOException | InterruptedException ignored) {
         }
     }
+    public static String input_string() {
+        final Scanner input = new Scanner(System.in);
+        String a;
+        while (true) {
+            a = input.nextLine();
+            if (a.trim().compareTo("") == 0) {
+                System.out.print("  Wrong type, enter again: ");
 
-   
+            } else {
+                return a.trim();
+            }
+        }
+
+    }
+
+   public static boolean isEmptyString(String input){
+       if (input.trim().isEmpty() || input == null) {
+           return true;
+       }
+       return false;
+   }
 
 }

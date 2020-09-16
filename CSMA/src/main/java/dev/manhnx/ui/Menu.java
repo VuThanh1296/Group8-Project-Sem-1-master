@@ -1,7 +1,10 @@
 package dev.manhnx.ui;
 
+import java.io.IOException;
+
 public class Menu {
     public static void MenuAcc(){
+        cls();
         System.out.println("|============================|");
         System.out.println("|       [CSMA] Group-8       |");
         System.out.println("|============================|");
@@ -14,6 +17,7 @@ public class Menu {
         System.out.println("|============================|");
     }
     public static void MenuCafe(){
+        cls();
         System.out.println("|============================|");
         System.out.println("|        [CSMA] Group-8      |");
         System.out.println("|============================|");
@@ -27,6 +31,7 @@ public class Menu {
         System.out.println("|============================|");
     }
     public static void MenuOrder(){
+        cls();
         System.out.println("|============================|");
         System.out.println("|        [CSMA] Group-8      |");
         System.out.println("|============================|");
@@ -38,6 +43,7 @@ public class Menu {
         System.out.println("|============================|");
     }
     public static void Product_Staff(){
+       cls();
         System.out.println("|===========================|");
         System.out.println("|           Group-8         |");
         System.out.println("|===========================|");
@@ -59,4 +65,13 @@ public class Menu {
     //     System.out.println("|0.Exit                     |");
     //     System.out.println("=============================");
     // }
+    public static void cls() {
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ignored) {
+        }
+    }
 }

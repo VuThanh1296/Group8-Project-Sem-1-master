@@ -3,6 +3,7 @@ package dev.manhnx.ui;
 import java.util.List;
 import java.util.Scanner;
 
+import dev.manhnx.App;
 import dev.manhnx.bl.AccountBL;
 import dev.manhnx.persistance.Account;
 
@@ -11,17 +12,16 @@ public class AccountUIFunction {
     Scanner sc = new Scanner(System.in);
 
     public static void showAllAccount() {
-
+        App.cls();
         List<Account> lst = new AccountBL().getAllAccount();
         try {
 
-            System.out.println(
-                    "================================================================================================================================================================================================");
+            System.out.println( "================================================================================================================================================================================================");
             ;
-            System.out.println("Group-08");
+            System.out.println("                                                                                                     Group-08");
             System.out.println(
                     "================================================================================================================================================================================================");
-            System.out.println("Account list");
+            System.out.println("                                                                                                      Account list                 ");
             System.out.println(
                     "================================================================================================================================================================================================");
             System.out.printf(
@@ -97,8 +97,8 @@ public class AccountUIFunction {
             abl.updateAccount(inputInfo());
             System.out.println("update complete");
 
-        } catch(Exception e) {
-            System.out.println("error" +e);
+        } catch (Exception e) {
+            System.out.println("error" + e);
         }
 
         // sc.nextLine();

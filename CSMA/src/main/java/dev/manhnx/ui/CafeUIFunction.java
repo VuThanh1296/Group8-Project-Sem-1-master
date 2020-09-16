@@ -3,6 +3,7 @@ package dev.manhnx.ui;
 import java.util.List;
 import java.util.Scanner;
 
+import dev.manhnx.App;
 import dev.manhnx.bl.CafeBL;
 import dev.manhnx.persistance.Cafe;
 
@@ -26,7 +27,8 @@ public class CafeUIFunction {
             for (Cafe cafe : cafes) {
                 System.out.printf("| %-8s | %-21s | %-11s | %-16s | %-13s | \n", cafe.getCafeId(), cafe.getCafeName(),
                         cafe.getCafePrice(), cafe.getCafeAmount(), cafe.getCafeStatus());
-                System.out.println("|===================================================================================|");
+                System.out.println(
+                        "|===================================================================================|");
 
             }
 
@@ -63,16 +65,13 @@ public class CafeUIFunction {
     public static void updateCafe() {
         // AccountBL abl = new AccountBL();
         Scanner sc = new Scanner(System.in);
-        try  {
+        try {
             cbl.updateCafe(inputInfo());
             System.out.println("update complete");
 
+        } catch (Exception e) {
+            System.out.println("error" + e);
         }
-        catch(Exception e) {
-            System.out.println("error"+e);
-        }
-            
-        
 
         // sc.nextLine();
 
@@ -91,8 +90,8 @@ public class CafeUIFunction {
         cafe.setCafePrice(Double.parseDouble(sc.nextLine()));
         System.out.print("New Drink_Amount: ");
         cafe.setCafeAmount(Integer.parseInt(sc.nextLine()));
-        System.out.print("New Drink_Status: ");
-        cafe.setCafeStatus(Integer.parseInt(sc.nextLine()));
+        // System.out.print("New Drink_Status: ");
+        // cafe.setCafeStatus(Integer.parseInt(sc.nextLine()));
         // sc.close();
         return cafe;
     }
@@ -117,7 +116,8 @@ public class CafeUIFunction {
             for (Cafe cafe : lst) {
                 System.out.printf("| %-8s | %-21s | %-11s | %-16s | %-13s | \n", cafe.getCafeId(), cafe.getCafeName(),
                         cafe.getCafePrice(), cafe.getCafeAmount(), cafe.getCafeStatus());
-                System.out.println("|===================================================================================|");
+                System.out.println(
+                        "|===================================================================================|");
 
             }
             // System.out.println("nhap Enter de tiep tuc");
@@ -149,7 +149,8 @@ public class CafeUIFunction {
             for (Cafe cafe : lis) {
                 System.out.printf("| %-8s | %-21s | %-11s | %-16s | %-13s | \n", cafe.getCafeId(), cafe.getCafeName(),
                         cafe.getCafePrice(), cafe.getCafeAmount(), cafe.getCafeStatus());
-                System.out.println("|===================================================================================|");
+                System.out.println(
+                        "|===================================================================================|");
 
             }
             // System.out.println("nhấn phím bất kỳ để quay lại!");
@@ -159,4 +160,11 @@ public class CafeUIFunction {
         }
 
     }
+
+    // public static boolean isEmptyString(String input) {
+    //     if (input.trim().isEmpty() || input == null) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
 }
